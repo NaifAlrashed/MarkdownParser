@@ -27,16 +27,24 @@ struct Lexer {
 extension Substring.UnicodeScalarView {
     
     mutating func nextToken() -> Token? {
-        return readDoubleStars() ?? readText()
+        return readDoubleCharacterTokens() ?? readText()
     }
     
-    private mutating func readDoubleStars() -> Token? {
+    private mutating func readDoubleCharacterTokens() -> Token? {
         let start = self
-        guard popFirst() == "*" && popFirst() == "*" else {
+        guard let firstChar = popFirst(), let secondChar = popFirst() else {
             self = start
             return nil
         }
-        return .doubleStars
+        switch (firstChar, secondChar) {
+        case ("*", "*"):
+            return .doubleStars
+        case ("_", "_"):
+            return .doubleUnderScore
+        default:
+            self = start
+            return nil
+        }
     }
     
     private mutating func readText() -> Token? {

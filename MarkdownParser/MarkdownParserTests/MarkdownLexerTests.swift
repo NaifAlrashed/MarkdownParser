@@ -20,4 +20,10 @@ class MarkdownLexerTests: XCTestCase {
             .doubleStars, .text("Hello world"), .doubleStars
         ])
     }
+    
+    func test_canTokenizeItalics() {
+        XCTAssertEqual(Lexer(input: "__Hello world__").tokenize(), [
+            .doubleUnderScore, .text("Hello world"), .doubleUnderScore
+        ])
+    }
 }
