@@ -12,13 +12,11 @@ import XCTest
 class MarkdownLexerTests: XCTestCase {
     
     func test_canTokenizeEmptyString() {
-        var lexer = Lexer(input: "")
-        XCTAssertEqual(lexer.tokenize(), [])
+        XCTAssertEqual(Lexer(input: "").tokenize(), [])
     }
     
     func test_canTokenizeBold() {
-        var lexer = Lexer(input: "**Hello world**")
-        XCTAssertEqual(lexer.tokenize(), [
+        XCTAssertEqual(Lexer(input: "**Hello world**").tokenize(), [
             .doubleStars, .text("Hello world"), .doubleStars
         ])
     }
