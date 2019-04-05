@@ -11,7 +11,15 @@ import XCTest
 
 class MarkdownLexerTests: XCTestCase {
     
-    func testMarkdownLexerExists() {
-        XCTAssertNotNil(Lexer())
+    func test_canTokenizeEmptyString() {
+        var lexer = Lexer(input: "")
+        XCTAssertEqual(lexer.tokenize(), [])
+    }
+    
+    func test_canTokenizeBold() {
+        var lexer = Lexer(input: "**Hello world**")
+        XCTAssertEqual(lexer.tokenize(), [
+            .doubleStars, .text("Hello world"), .doubleStars
+        ])
     }
 }

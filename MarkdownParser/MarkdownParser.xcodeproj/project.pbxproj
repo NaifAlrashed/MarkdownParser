@@ -11,6 +11,7 @@
 		9EF910C72257823700300A74 /* MarkdownParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EF910B92257823700300A74 /* MarkdownParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9EF910D12257826000300A74 /* MarkdownLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF910D02257826000300A74 /* MarkdownLexerTests.swift */; };
 		9EF910D3225782A800300A74 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF910D2225782A800300A74 /* Lexer.swift */; };
+		9EF910D52257853E00300A74 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF910D42257853E00300A74 /* Token.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		9EF910C62257823700300A74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EF910D02257826000300A74 /* MarkdownLexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownLexerTests.swift; sourceTree = "<group>"; };
 		9EF910D2225782A800300A74 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
+		9EF910D42257853E00300A74 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				9EF910B92257823700300A74 /* MarkdownParser.h */,
 				9EF910BA2257823700300A74 /* Info.plist */,
 				9EF910D2225782A800300A74 /* Lexer.swift */,
+				9EF910D42257853E00300A74 /* Token.swift */,
 			);
 			path = MarkdownParser;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EF910D3225782A800300A74 /* Lexer.swift in Sources */,
+				9EF910D52257853E00300A74 /* Token.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
