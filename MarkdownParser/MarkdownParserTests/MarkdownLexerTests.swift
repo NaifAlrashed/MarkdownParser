@@ -15,15 +15,27 @@ class MarkdownLexerTests: XCTestCase {
         XCTAssertEqual(Lexer(input: "").tokenize(), [])
     }
     
-    func test_canTokenizeBold() {
+    func test_canTokenizeBoldWithDoubleStars() {
         XCTAssertEqual(Lexer(input: "**Hello world**").tokenize(), [
             .doubleStars, .text("Hello world"), .doubleStars
         ])
     }
     
-    func test_canTokenizeItalics() {
+    func test_canTokenizeBoldWithDoubleUnderScores() {
         XCTAssertEqual(Lexer(input: "__Hello world__").tokenize(), [
             .doubleUnderScore, .text("Hello world"), .doubleUnderScore
+        ])
+    }
+    
+    func test_canTokenize_italics_withSingleUnderScore() {
+        XCTAssertEqual(Lexer(input: "_Hello world_").tokenize(), [
+            .singleUnderScore, .text("Hello world"), .singleUnderScore
+        ])
+    }
+    
+    func test_canTokenize_italics_withSingleStar() {
+        XCTAssertEqual(Lexer(input: "*Hello world*").tokenize(), [
+            .singleStar, .text("Hello world"), .singleStar
         ])
     }
 }

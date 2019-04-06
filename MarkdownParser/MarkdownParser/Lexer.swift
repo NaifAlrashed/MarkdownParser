@@ -27,20 +27,31 @@ struct Lexer {
 extension Substring.UnicodeScalarView {
     
     mutating func nextToken() -> Token? {
-        return readDoubleCharacterTokens() ?? readText()
+        return readCharacterTokens() ?? readText()
     }
     
-    private mutating func readDoubleCharacterTokens() -> Token? {
+    private mutating func readCharacterTokens() -> Token? {
         let start = self
-        guard let firstChar = popFirst(), let secondChar = popFirst() else {
+        guard let firstChar = popFirst() else {
             self = start
             return nil
         }
-        switch (firstChar, secondChar) {
-        case ("*", "*"):
-            return .doubleStars
-        case ("_", "_"):
-            return .doubleUnderScore
+        let afterFirstCharPop = self
+        switch firstChar {
+        case "*":
+            if let secondChar = popFirst(), secondChar == "*" {
+                return .doubleStars
+            } else {
+                self = afterFirstCharPop
+                return .singleStar
+            }
+        case "_":
+            if let secondChar = popFirst(), secondChar == "_" {
+                return .doubleUnderScore
+            } else {
+                self = afterFirstCharPop
+                return .singleUnderScore
+            }
         default:
             self = start
             return nil
