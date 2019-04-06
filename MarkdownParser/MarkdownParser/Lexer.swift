@@ -38,6 +38,13 @@ extension Substring.UnicodeScalarView {
         }
         let afterFirstCharPop = self
         switch firstChar {
+        case "#":
+            if let secondChar = popFirst(), CharacterSet.whitespaces.contains(secondChar) {
+                return .largeTitle
+            } else {
+                self = start
+                return nil
+            }
         case "*":
             if let secondChar = popFirst(), secondChar == "*" {
                 return .doubleStars

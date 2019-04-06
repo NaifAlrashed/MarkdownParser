@@ -8,6 +8,8 @@
 
 enum Token: Equatable {
     
+    case largeTitle
+    
     case doubleStars
     case singleStar
     

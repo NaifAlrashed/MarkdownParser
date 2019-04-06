@@ -38,4 +38,10 @@ class MarkdownLexerTests: XCTestCase {
             .singleStar, .text("Hello world"), .singleStar
         ])
     }
+    
+    func test_header1() {
+        XCTAssertEqual(Lexer(input: "# Hello World").tokenize(), [
+            .largeTitle, .text("Hello World")
+        ])
+    }
 }
