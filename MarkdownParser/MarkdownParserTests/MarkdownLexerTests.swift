@@ -45,6 +45,12 @@ class MarkdownLexerTests: XCTestCase {
         ])
     }
     
+    func test_italics_withDoubleStars_withSpace_atTheBeginning() {
+        XCTAssertEqual(Lexer(input: "* Hello world*").tokenize(), [
+            .text("* Hello world"), .singleStar
+            ])
+    }
+    
     func test_header1() {
         XCTAssertEqual(Lexer(input: "# Hello World").tokenize(), [
             .largeTitle, .text("Hello World")
