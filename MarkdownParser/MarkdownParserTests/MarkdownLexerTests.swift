@@ -33,9 +33,21 @@ class MarkdownLexerTests: XCTestCase {
         ])
     }
     
+    func test_bold_withDoubleUnderScores_withSpace_atTheBeginning() {
+        XCTAssertEqual(Lexer(input: "__ Hello world__").tokenize(), [
+            .text("__ Hello world"), .doubleUnderScore
+        ])
+    }
+    
     func test_italics_withSingleUnderScore() {
         XCTAssertEqual(Lexer(input: "_Hello world_").tokenize(), [
             .singleUnderScore, .text("Hello world"), .singleUnderScore
+        ])
+    }
+    
+    func test_italics_withSingleUnderScore_withSpace_atTheBeginning() {
+        XCTAssertEqual(Lexer(input: "_ Hello world_").tokenize(), [
+            .text("_ Hello world"), .singleUnderScore
         ])
     }
     

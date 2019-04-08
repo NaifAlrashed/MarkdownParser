@@ -67,8 +67,24 @@ extension Substring.UnicodeScalarView {
                 return .singleStar
             }
         case "_":
-            if let secondChar = popFirst(), secondChar == "_" {
-                return .doubleUnderScore
+            if let secondChar = popFirst() {
+                let beforeThirdChar = self
+                if secondChar == "_" {
+                    if let thirdChar = popFirst(), CharacterSet.whitespaces.contains(thirdChar) {
+                        self = start
+                        return nil
+                    } else {
+                        self = beforeThirdChar
+                        return .doubleUnderScore
+                    }
+                } else if CharacterSet.whitespaces.contains(secondChar) {
+                    self = start
+                    return nil
+                } else {
+                    self = afterFirstCharPop
+                    return .singleUnderScore
+                }
+                
             } else {
                 self = afterFirstCharPop
                 return .singleUnderScore
