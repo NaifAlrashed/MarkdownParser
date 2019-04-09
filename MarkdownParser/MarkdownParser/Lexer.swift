@@ -39,8 +39,15 @@ extension Substring.UnicodeScalarView {
         let afterFirstCharPop = self
         switch firstChar {
         case "#":
-            if let secondChar = popFirst(), CharacterSet.whitespaces.contains(secondChar) {
-                return .h1
+            if let secondChar = popFirst() {
+                if CharacterSet.whitespaces.contains(secondChar) {
+                    return .h1
+                } else if secondChar == "#", let thirdChar = popFirst(), CharacterSet.whitespaces.contains(thirdChar) {
+                    return .h2
+                } else {
+                    self = start
+                    return nil
+                }
             } else {
                 self = start
                 return nil

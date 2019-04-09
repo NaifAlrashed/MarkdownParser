@@ -74,4 +74,10 @@ class MarkdownLexerTests: XCTestCase {
             .text("#Hello World")
         ])
     }
+    
+    func test_h2() {
+        XCTAssertEqual(Lexer(input: "## Hello World").tokenize(), [
+            .h2, .text("Hello World")
+        ])
+    }
 }

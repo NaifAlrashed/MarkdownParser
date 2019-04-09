@@ -9,6 +9,7 @@
 enum Token: Equatable {
     
     case h1
+    case h2
     
     case doubleStars
     case singleStar
