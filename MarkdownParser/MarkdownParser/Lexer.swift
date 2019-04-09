@@ -40,7 +40,7 @@ extension Substring.UnicodeScalarView {
         switch firstChar {
         case "#":
             if let secondChar = popFirst(), CharacterSet.whitespaces.contains(secondChar) {
-                return .largeTitle
+                return .h1
             } else {
                 self = start
                 return nil
