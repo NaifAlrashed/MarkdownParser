@@ -42,8 +42,14 @@ extension Substring.UnicodeScalarView {
             if let secondChar = popFirst() {
                 if CharacterSet.whitespaces.contains(secondChar) {
                     return .h1
-                } else if secondChar == "#", let thirdChar = popFirst(), CharacterSet.whitespaces.contains(thirdChar) {
-                    return .h2
+                } else if secondChar == "#", let thirdChar = popFirst() {
+                    if CharacterSet.whitespaces.contains(thirdChar) {
+                        return .h2
+                    } else if thirdChar == "#", let forthChar = popFirst() {
+                        return CharacterSet.whitespaces.contains(forthChar) ? .h3: nil
+                    }
+                    self = start
+                    return nil
                 } else {
                     self = start
                     return nil
