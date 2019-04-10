@@ -63,13 +63,13 @@ class MarkdownLexerTests: XCTestCase {
         ])
     }
     
-    func test_header1() {
+    func test_h1() {
         XCTAssertEqual(Lexer(input: "# Hello World").tokenize(), [
             .h1, .text("Hello World")
         ])
     }
     
-    func test_header1_withoutSpace() {
+    func test_h1_withoutSpace() {
         XCTAssertEqual(Lexer(input: "#Hello World").tokenize(), [
             .text("#Hello World")
         ])
@@ -81,7 +81,7 @@ class MarkdownLexerTests: XCTestCase {
         ])
     }
     
-    func test_header2_withoutSpace() {
+    func test_h2_withoutSpace() {
         XCTAssertEqual(Lexer(input: "##Hello World").tokenize(), [.text("##Hello World")])
     }
 }
