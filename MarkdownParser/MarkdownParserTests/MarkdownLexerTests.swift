@@ -80,4 +80,8 @@ class MarkdownLexerTests: XCTestCase {
             .h2, .text("Hello World")
         ])
     }
+    
+    func test_header2_withoutSpace() {
+        XCTAssertEqual(Lexer(input: "##Hello World").tokenize(), [.text("##Hello World")])
+    }
 }
