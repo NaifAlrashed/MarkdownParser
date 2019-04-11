@@ -39,25 +39,7 @@ extension Substring.UnicodeScalarView {
         let afterFirstCharPop = self
         switch firstChar {
         case "#":
-            if let secondChar = popFirst() {
-                if CharacterSet.whitespaces.contains(secondChar) {
-                    return .h1
-                } else if secondChar == "#", let thirdChar = popFirst() {
-                    if CharacterSet.whitespaces.contains(thirdChar) {
-                        return .h2
-                    } else if thirdChar == "#", let forthChar = popFirst() {
-                        return CharacterSet.whitespaces.contains(forthChar) ? .h3: nil
-                    }
-                    self = start
-                    return nil
-                } else {
-                    self = start
-                    return nil
-                }
-            } else {
-                self = start
-                return nil
-            }
+            return readTitle(start: start)
         case "*":
             if let secondChar = popFirst() {
                 let beforeThirdChar = self
@@ -103,6 +85,28 @@ extension Substring.UnicodeScalarView {
                 return .singleUnderScore
             }
         default:
+            self = start
+            return nil
+        }
+    }
+    
+    private mutating func readTitle(start: Substring.UnicodeScalarView) -> Token? {
+        if let secondChar = popFirst() {
+            if CharacterSet.whitespaces.contains(secondChar) {
+                return .h1
+            } else if secondChar == "#", let thirdChar = popFirst() {
+                if CharacterSet.whitespaces.contains(thirdChar) {
+                    return .h2
+                } else if thirdChar == "#", let forthChar = popFirst() {
+                    return CharacterSet.whitespaces.contains(forthChar) ? .h3: nil
+                }
+                self = start
+                return nil
+            } else {
+                self = start
+                return nil
+            }
+        } else {
             self = start
             return nil
         }
