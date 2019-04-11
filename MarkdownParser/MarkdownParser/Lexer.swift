@@ -41,26 +41,7 @@ extension Substring.UnicodeScalarView {
         case "#":
             return readTitle(start: start)
         case "*":
-            if let secondChar = popFirst() {
-                let beforeThirdChar = self
-                if CharacterSet.whitespaces.contains(secondChar) {
-                    self = start
-                    return nil
-                } else if secondChar == "*" {
-                    if let thirdChar = popFirst(), CharacterSet.whitespaces.contains(thirdChar) {
-                        self = start
-                        return nil
-                    } else {
-                        self = beforeThirdChar
-                        return .doubleStars
-                    }
-                }
-                self = afterFirstCharPop
-                return .singleStar
-            } else {
-                self = afterFirstCharPop
-                return .singleStar
-            }
+            return readStar(start: start, afterFirstChar: afterFirstCharPop)
         case "_":
             if let secondChar = popFirst() {
                 let beforeThirdChar = self
@@ -87,6 +68,30 @@ extension Substring.UnicodeScalarView {
         default:
             self = start
             return nil
+        }
+    }
+    
+    private mutating func readStar(start: Substring.UnicodeScalarView,
+                                   afterFirstChar: Substring.UnicodeScalarView) -> Token? {
+        if let secondChar = popFirst() {
+            let beforeThirdChar = self
+            if CharacterSet.whitespaces.contains(secondChar) {
+                self = start
+                return nil
+            } else if secondChar == "*" {
+                if let thirdChar = popFirst(), CharacterSet.whitespaces.contains(thirdChar) {
+                    self = start
+                    return nil
+                } else {
+                    self = beforeThirdChar
+                    return .doubleStars
+                }
+            }
+            self = afterFirstChar
+            return .singleStar
+        } else {
+            self = afterFirstChar
+            return .singleStar
         }
     }
     
