@@ -38,12 +38,12 @@ extension Substring.UnicodeScalarView {
         }
         let afterFirstCharPop = self
         switch firstChar {
-        case "#":
-            return readTitle(start: start)
         case "*":
             return readStar(start: start, afterFirstChar: afterFirstCharPop)
         case "_":
             return readUnderScore(start: start, afterFirstChar: afterFirstCharPop)
+        case "#":
+            return readTitle(start: start)
         default:
             self = start
             return nil
