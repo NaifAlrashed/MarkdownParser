@@ -43,28 +43,7 @@ extension Substring.UnicodeScalarView {
         case "*":
             return readStar(start: start, afterFirstChar: afterFirstCharPop)
         case "_":
-            if let secondChar = popFirst() {
-                let beforeThirdChar = self
-                if secondChar == "_" {
-                    if let thirdChar = popFirst(), CharacterSet.whitespaces.contains(thirdChar) {
-                        self = start
-                        return nil
-                    } else {
-                        self = beforeThirdChar
-                        return .doubleUnderScore
-                    }
-                } else if CharacterSet.whitespaces.contains(secondChar) {
-                    self = start
-                    return nil
-                } else {
-                    self = afterFirstCharPop
-                    return .singleUnderScore
-                }
-                
-            } else {
-                self = afterFirstCharPop
-                return .singleUnderScore
-            }
+            return readUnderScore(start: start, afterFirstChar: afterFirstCharPop)
         default:
             self = start
             return nil
@@ -92,6 +71,32 @@ extension Substring.UnicodeScalarView {
         } else {
             self = afterFirstChar
             return .singleStar
+        }
+    }
+    
+    private mutating func readUnderScore(start: Substring.UnicodeScalarView,
+                                         afterFirstChar: Substring.UnicodeScalarView) -> Token? {
+        if let secondChar = popFirst() {
+            let beforeThirdChar = self
+            if secondChar == "_" {
+                if let thirdChar = popFirst(), CharacterSet.whitespaces.contains(thirdChar) {
+                    self = start
+                    return nil
+                } else {
+                    self = beforeThirdChar
+                    return .doubleUnderScore
+                }
+            } else if CharacterSet.whitespaces.contains(secondChar) {
+                self = start
+                return nil
+            } else {
+                self = afterFirstChar
+                return .singleUnderScore
+            }
+            
+        } else {
+            self = afterFirstChar
+            return .singleUnderScore
         }
     }
     
