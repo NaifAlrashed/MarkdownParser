@@ -94,4 +94,12 @@ class MarkdownLexerTests: XCTestCase {
     func test_h4_withoutSpace() {
         XCTAssertEqual(Lexer(input: "####Hello World").tokenize(), [.text("####Hello World")])
     }
+    
+    func test_h5() {
+        XCTAssertEqual(Lexer(input: "##### Hello World").tokenize(), [.h5, .text("Hello World")])
+    }
+    
+    func test_h5_withoutSpace() {
+        XCTAssertEqual(Lexer(input: "#####Hello World").tokenize(), [.text("#####Hello World")])
+    }
 }
