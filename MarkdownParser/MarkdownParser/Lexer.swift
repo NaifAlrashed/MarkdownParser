@@ -101,25 +101,37 @@ extension Substring.UnicodeScalarView {
     }
     
     private mutating func readTitle(start: Substring.UnicodeScalarView) -> Token? {
-        if let secondChar = popFirst() {
-            if CharacterSet.whitespaces.contains(secondChar) {
+        
+        func generateTitle(numberOfHashtags: Int) -> Token? {
+            switch numberOfHashtags {
+            case 1:
                 return .h1
-            } else if secondChar == "#", let thirdChar = popFirst() {
-                if CharacterSet.whitespaces.contains(thirdChar) {
-                    return .h2
-                } else if thirdChar == "#", let forthChar = popFirst() {
-                    return CharacterSet.whitespaces.contains(forthChar) ? .h3: nil
-                }
-                self = start
+            case 2:
+                return .h2
+            case 3:
+                return .h3
+            default:
                 return nil
+            }
+        }
+        
+        for numberOfHashtags in 1...3 {
+            if let nextChar = popFirst() {
+                if nextChar == "#" {
+                    continue
+                } else if NSCharacterSet.whitespaces.contains(nextChar) {
+                    return generateTitle(numberOfHashtags: numberOfHashtags)
+                } else {
+                    self = start
+                    return nil
+                }
             } else {
                 self = start
                 return nil
             }
-        } else {
-            self = start
-            return nil
         }
+        self = start
+        return nil
     }
     
     private mutating func readText() -> Token? {
