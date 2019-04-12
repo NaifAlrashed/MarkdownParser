@@ -114,12 +114,14 @@ extension Substring.UnicodeScalarView {
                 return .h4
             case 5:
                 return .h5
+            case 6:
+                return .h6
             default:
                 return nil
             }
         }
         
-        for numberOfHashtags in 1...5 {
+        for numberOfHashtags in 1...6 {
             if let nextChar = popFirst() {
                 if nextChar == "#" {
                     continue
