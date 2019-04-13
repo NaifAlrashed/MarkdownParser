@@ -80,4 +80,9 @@ class MarkdownLexerTests: XCTestCase {
                         .text("How"), .whiteSpace, .text("Are"), .whiteSpace, .text("You")
                        ])
     }
+    
+    func test_link() {
+        XCTAssertEqual(Lexer(input: "[link](google.com)").tokenize(), [
+            .openBracket, .text("link"), .closeBracket, .openParenthesis, .text("google.com"), .closeParenthesis])
+    }
 }

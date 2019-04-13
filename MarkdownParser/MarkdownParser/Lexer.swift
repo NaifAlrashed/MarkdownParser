@@ -62,6 +62,14 @@ extension Substring.UnicodeScalarView {
             return readUnderScore(afterFirstChar: afterFirstCharPop)
         case "#":
             return readTitle(start: start)
+        case "(":
+            return .openParenthesis
+        case ")":
+            return .closeParenthesis
+        case "[":
+            return .openBracket
+        case "]":
+            return .closeBracket
         default:
             self = start
             return nil
@@ -142,5 +150,5 @@ extension Substring.UnicodeScalarView {
 }
 
 extension CharacterSet {
-    static let markDownKeyWords = CharacterSet(charactersIn: "_#*").union(.whitespacesAndNewlines)
+    static let markDownKeyWords = CharacterSet(charactersIn: "()[]_#*").union(.whitespacesAndNewlines)
 }

@@ -23,6 +23,12 @@ enum Token: Equatable {
     
     case text(String)
     
+    case openBracket
+    case closeBracket
+    
+    case openParenthesis
+    case closeParenthesis
+    
     case whiteSpace
     case newLine
 }
