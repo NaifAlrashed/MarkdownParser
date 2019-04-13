@@ -17,55 +17,67 @@ class MarkdownLexerTests: XCTestCase {
     
     func test_bold_withDoubleStars() {
         XCTAssertEqual(Lexer(input: "**Hello world**").tokenize(), [
-            .doubleStars, .text("Hello world"), .doubleStars
+            .doubleStars, .text("Hello"), .whiteSpace, .text("world"), .doubleStars
         ])
     }
     
     func test_bold_withDoubleUnderScores() {
         XCTAssertEqual(Lexer(input: "__Hello world__").tokenize(), [
-            .doubleUnderScore, .text("Hello world"), .doubleUnderScore
+            .doubleUnderScore, .text("Hello"), .whiteSpace, .text("world"), .doubleUnderScore
         ])
     }
     
     func test_italics_withSingleUnderScore() {
         XCTAssertEqual(Lexer(input: "_Hello world_").tokenize(), [
-            .singleUnderScore, .text("Hello world"), .singleUnderScore
+            .singleUnderScore, .text("Hello"), .whiteSpace, .text("world"), .singleUnderScore
         ])
     }
     
     func test_italics_withSingleStar() {
         XCTAssertEqual(Lexer(input: "*Hello world*").tokenize(), [
-            .singleStar, .text("Hello world"), .singleStar
+            .singleStar, .text("Hello"), .whiteSpace, .text("world"), .singleStar
         ])
     }
     
     func test_h1() {
         XCTAssertEqual(Lexer(input: "# Hello World").tokenize(), [
-            .h1, .whiteSpace, .text("Hello World")])
+            .h1, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_h2() {
         XCTAssertEqual(Lexer(input: "## Hello World").tokenize(), [
-            .h2,.whiteSpace, .text("Hello World")])
+            .h2,.whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_h3() {
         XCTAssertEqual(Lexer(input: "### Hello World").tokenize(), [
-            .h3, .whiteSpace, .text("Hello World")])
+            .h3, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_h4() {
         XCTAssertEqual(Lexer(input: "#### Hello World").tokenize(), [
-            .h4, .whiteSpace, .text("Hello World")])
+            .h4, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_h5() {
         XCTAssertEqual(Lexer(input: "##### Hello World").tokenize(), [
-            .h5, .whiteSpace, .text("Hello World")])
+            .h5, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_h6() {
         XCTAssertEqual(Lexer(input: "###### Hello World").tokenize(), [
-            .h6, .whiteSpace, .text("Hello World")])
+            .h6, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
+    }
+    
+    func test_newLine() {
+        let input = """
+                    # Hello
+                    How Are You
+                    """
+        XCTAssertEqual(Lexer(input: input).tokenize(),
+                       [
+                        .h1, .whiteSpace, .text("Hello"), .newLine,
+                        .text("How"), .whiteSpace, .text("Are"), .whiteSpace, .text("You")
+                       ])
     }
 }

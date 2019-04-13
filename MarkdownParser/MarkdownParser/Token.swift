@@ -24,4 +24,5 @@ enum Token: Equatable {
     case text(String)
     
     case whiteSpace
+    case newLine
 }
