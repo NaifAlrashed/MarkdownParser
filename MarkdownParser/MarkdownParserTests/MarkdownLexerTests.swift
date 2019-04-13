@@ -83,6 +83,15 @@ class MarkdownLexerTests: XCTestCase {
     
     func test_link() {
         XCTAssertEqual(Lexer(input: "[link](google.com)").tokenize(), [
-            .openBracket, .text("link"), .closeBracket, .openParenthesis, .text("google.com"), .closeParenthesis])
+            .openBracket, .text("link"), .closeBracket,
+            .openParenthesis, .text("google.com"), .closeParenthesis
+        ])
+    }
+    
+    func test_image() {
+        XCTAssertEqual(Lexer(input: "![Image](https://url/a.png)").tokenize(), [
+            .bang, .openBracket, .text("Image"), .closeBracket,
+            .openParenthesis, .text("https://url/a.png"), .closeParenthesis
+        ])
     }
 }
