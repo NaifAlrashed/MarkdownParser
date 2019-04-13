@@ -22,4 +22,6 @@ enum Token: Equatable {
     case singleUnderScore
     
     case text(String)
+    
+    case whiteSpace
 }

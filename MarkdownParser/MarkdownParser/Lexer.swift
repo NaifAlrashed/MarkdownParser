@@ -27,7 +27,23 @@ struct Lexer {
 extension Substring.UnicodeScalarView {
     
     mutating func nextToken() -> Token? {
-        return readCharacterTokens() ?? readText()
+        return readWhiteSpace() ??
+            readCharacterTokens() ??
+            readText()
+    }
+    
+    private mutating func readWhiteSpace() -> Token? {
+        let start = self
+        guard let char = popFirst() else {
+            self = start
+            return nil
+        }
+        if CharacterSet.whitespaces.contains(char) {
+            return .whiteSpace
+        } else {
+            self = start
+            return nil
+        }
     }
     
     private mutating func readCharacterTokens() -> Token? {

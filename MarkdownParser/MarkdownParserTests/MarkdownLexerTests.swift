@@ -40,26 +40,32 @@ class MarkdownLexerTests: XCTestCase {
     }
     
     func test_h1() {
-        XCTAssertEqual(Lexer(input: "# Hello World").tokenize(), [.h1, .text(" Hello World")])
+        XCTAssertEqual(Lexer(input: "# Hello World").tokenize(), [
+            .h1, .whiteSpace, .text("Hello World")])
     }
     
     func test_h2() {
-        XCTAssertEqual(Lexer(input: "## Hello World").tokenize(), [.h2, .text(" Hello World")])
+        XCTAssertEqual(Lexer(input: "## Hello World").tokenize(), [
+            .h2,.whiteSpace, .text("Hello World")])
     }
     
     func test_h3() {
-        XCTAssertEqual(Lexer(input: "### Hello World").tokenize(), [.h3, .text(" Hello World")])
+        XCTAssertEqual(Lexer(input: "### Hello World").tokenize(), [
+            .h3, .whiteSpace, .text("Hello World")])
     }
     
     func test_h4() {
-        XCTAssertEqual(Lexer(input: "#### Hello World").tokenize(), [.h4, .text(" Hello World")])
+        XCTAssertEqual(Lexer(input: "#### Hello World").tokenize(), [
+            .h4, .whiteSpace, .text("Hello World")])
     }
     
     func test_h5() {
-        XCTAssertEqual(Lexer(input: "##### Hello World").tokenize(), [.h5, .text(" Hello World")])
+        XCTAssertEqual(Lexer(input: "##### Hello World").tokenize(), [
+            .h5, .whiteSpace, .text("Hello World")])
     }
     
     func test_h6() {
-        XCTAssertEqual(Lexer(input: "###### Hello World").tokenize(), [.h6, .text(" Hello World")])
+        XCTAssertEqual(Lexer(input: "###### Hello World").tokenize(), [
+            .h6, .whiteSpace, .text("Hello World")])
     }
 }
