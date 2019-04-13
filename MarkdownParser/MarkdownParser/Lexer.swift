@@ -39,9 +39,9 @@ extension Substring.UnicodeScalarView {
         let afterFirstCharPop = self
         switch firstChar {
         case "*":
-            return readStar(start: start, afterFirstChar: afterFirstCharPop)
+            return readStar(afterFirstChar: afterFirstCharPop)
         case "_":
-            return readUnderScore(start: start, afterFirstChar: afterFirstCharPop)
+            return readUnderScore(afterFirstChar: afterFirstCharPop)
         case "#":
             return readTitle(start: start)
         default:
@@ -50,50 +50,18 @@ extension Substring.UnicodeScalarView {
         }
     }
     
-    private mutating func readStar(start: Substring.UnicodeScalarView,
-                                   afterFirstChar: Substring.UnicodeScalarView) -> Token? {
-        if let secondChar = popFirst() {
-            let beforeThirdChar = self
-            if CharacterSet.whitespaces.contains(secondChar) {
-                self = start
-                return nil
-            } else if secondChar == "*" {
-                if let thirdChar = popFirst(), CharacterSet.whitespaces.contains(thirdChar) {
-                    self = start
-                    return nil
-                } else {
-                    self = beforeThirdChar
-                    return .doubleStars
-                }
-            }
-            self = afterFirstChar
-            return .singleStar
+    private mutating func readStar(afterFirstChar: Substring.UnicodeScalarView) -> Token? {
+        if let secondChar = popFirst(), secondChar == "*" {
+            return .doubleStars
         } else {
             self = afterFirstChar
             return .singleStar
         }
     }
     
-    private mutating func readUnderScore(start: Substring.UnicodeScalarView,
-                                         afterFirstChar: Substring.UnicodeScalarView) -> Token? {
-        if let secondChar = popFirst() {
-            let beforeThirdChar = self
-            if secondChar == "_" {
-                if let thirdChar = popFirst(), CharacterSet.whitespaces.contains(thirdChar) {
-                    self = start
-                    return nil
-                } else {
-                    self = beforeThirdChar
-                    return .doubleUnderScore
-                }
-            } else if CharacterSet.whitespaces.contains(secondChar) {
-                self = start
-                return nil
-            } else {
-                self = afterFirstChar
-                return .singleUnderScore
-            }
-            
+    private mutating func readUnderScore(afterFirstChar: Substring.UnicodeScalarView) -> Token? {
+        if let secondChar = popFirst(), secondChar == "_" {
+            return .doubleUnderScore
         } else {
             self = afterFirstChar
             return .singleUnderScore
@@ -122,14 +90,13 @@ extension Substring.UnicodeScalarView {
         }
         
         for numberOfHashtags in 1...6 {
+            let stateBeforeCurrentChar = self
             if let nextChar = popFirst() {
                 if nextChar == "#" {
                     continue
-                } else if NSCharacterSet.whitespaces.contains(nextChar) {
-                    return generateTitle(numberOfHashtags: numberOfHashtags)
                 } else {
-                    self = start
-                    return nil
+                    self = stateBeforeCurrentChar
+                    return generateTitle(numberOfHashtags: numberOfHashtags)
                 }
             } else {
                 self = start
@@ -141,15 +108,21 @@ extension Substring.UnicodeScalarView {
     }
     
     private mutating func readText() -> Token? {
-        if let char = popFirst() {
-            let start = self
-            if case let .text(output)? = nextToken() {
-                return .text("\(char)\(output)")
+        var text = ""
+        var start = self
+        while let char = popFirst() {
+            if CharacterSet.markDownKeyWords.inverted.contains(char) {
+                text.append(String(char))
             } else {
                 self = start
-                return .text(String(char))
+                return text.isEmpty ? nil: .text(text)
             }
+            start = self
         }
-        return nil
+        return text.isEmpty ? nil: .text(text)
     }
+}
+
+extension CharacterSet {
+    static let markDownKeyWords = CharacterSet(charactersIn: "_#*")
 }
