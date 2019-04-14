@@ -99,4 +99,16 @@ class MarkdownLexerTests: XCTestCase {
         XCTAssertEqual(Lexer(input: "> Hello").tokenize(),
                        [.block, .whiteSpace, .text("Hello")])
     }
+    
+    func test_unorderedList_star() {
+        let input = """
+                    * first element
+                    * second element
+                    * third element
+                    """
+        XCTAssertEqual(Lexer(input: input).tokenize(),
+                       [.singleStar, .whiteSpace, .text("first"), .whiteSpace, .text("element"), .newLine,
+                        .singleStar, .whiteSpace, .text("second"), .whiteSpace, .text("element"), .newLine,
+                        .singleStar, .whiteSpace, .text("third"), .whiteSpace, .text("element")])
+    }
 }
