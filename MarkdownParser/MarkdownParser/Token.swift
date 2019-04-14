@@ -31,6 +31,8 @@ enum Token: Equatable {
     case openParenthesis
     case closeParenthesis
     
+    case block
+    
     case whiteSpace
     case newLine
 }

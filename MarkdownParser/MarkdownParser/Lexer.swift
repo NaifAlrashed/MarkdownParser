@@ -72,6 +72,8 @@ extension Substring.UnicodeScalarView {
             return .closeBracket
         case "!":
             return .bang
+        case ">":
+            return .block
         default:
             self = start
             return nil
@@ -152,5 +154,6 @@ extension Substring.UnicodeScalarView {
 }
 
 extension CharacterSet {
-    static let markDownKeyWords = CharacterSet(charactersIn: "!()[]_#*").union(.whitespacesAndNewlines)
+    static let markDownKeyWords = CharacterSet(charactersIn: ">!()[]_#*")
+        .union(.whitespacesAndNewlines)
 }

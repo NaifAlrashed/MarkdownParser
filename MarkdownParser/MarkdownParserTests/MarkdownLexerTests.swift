@@ -94,4 +94,9 @@ class MarkdownLexerTests: XCTestCase {
             .openParenthesis, .text("https://url/a.png"), .closeParenthesis
         ])
     }
+    
+    func test_block() {
+        XCTAssertEqual(Lexer(input: "> Hello").tokenize(),
+                       [.block, .whiteSpace, .text("Hello")])
+    }
 }
