@@ -111,4 +111,16 @@ class MarkdownLexerTests: XCTestCase {
                         .singleStar, .whiteSpace, .text("second"), .whiteSpace, .text("element"), .newLine,
                         .singleStar, .whiteSpace, .text("third"), .whiteSpace, .text("element")])
     }
+    
+    func test_unorderedList_dash() {
+        let input = """
+                    - first element
+                    - second element
+                    - third element
+                    """
+        XCTAssertEqual(Lexer(input: input).tokenize(),
+                       [.dash, .whiteSpace, .text("first"), .whiteSpace, .text("element"), .newLine,
+                        .dash, .whiteSpace, .text("second"), .whiteSpace, .text("element"), .newLine,
+                        .dash, .whiteSpace, .text("third"), .whiteSpace, .text("element")])
+    }
 }

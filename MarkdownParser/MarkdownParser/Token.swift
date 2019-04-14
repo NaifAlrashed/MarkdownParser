@@ -33,6 +33,8 @@ enum Token: Equatable {
     
     case block
     
+    case dash
+    
     case whiteSpace
     case newLine
 }
