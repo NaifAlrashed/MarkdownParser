@@ -123,4 +123,9 @@ class MarkdownLexerTests: XCTestCase {
                         .dash, .whiteSpace, .text("second"), .whiteSpace, .text("element"), .newLine,
                         .dash, .whiteSpace, .text("third"), .whiteSpace, .text("element")])
     }
+    
+    func test_inlineCode() {
+        XCTAssertEqual(Lexer(input: "`Hello`").tokenize(),
+                       [.inlineCode, .text("Hello"), .inlineCode])
+    }
 }

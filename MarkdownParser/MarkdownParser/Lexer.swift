@@ -76,6 +76,8 @@ extension Substring.UnicodeScalarView {
             return .block
         case "-":
             return .dash
+        case "`":
+            return .inlineCode
         default:
             self = start
             return nil
@@ -156,6 +158,6 @@ extension Substring.UnicodeScalarView {
 }
 
 extension CharacterSet {
-    static let markDownKeyWords = CharacterSet(charactersIn: "->!()[]_#*")
+    static let markDownKeyWords = CharacterSet(charactersIn: "`->!()[]_#*")
         .union(.whitespacesAndNewlines)
 }
