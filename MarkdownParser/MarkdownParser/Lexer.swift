@@ -77,7 +77,7 @@ extension Substring.UnicodeScalarView {
         case "-":
             return .dash
         case "`":
-            return .inlineCode
+            return readCodeBlock()
         default:
             self = start
             return nil
@@ -139,6 +139,18 @@ extension Substring.UnicodeScalarView {
         }
         self = start
         return nil
+    }
+    
+    private mutating func readCodeBlock() -> Token {
+        let start = self
+        guard let secondChar = popFirst(),
+            secondChar == "`",
+            let thirdChar = popFirst(), thirdChar == "`"
+        else {
+            self = start
+            return .inlineCode
+        }
+        return .codeBlock
     }
     
     private mutating func readText() -> Token? {

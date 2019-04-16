@@ -32,6 +32,7 @@ enum Token: Equatable {
     case closeParenthesis
     
     case block
+    case codeBlock
     
     case dash
     

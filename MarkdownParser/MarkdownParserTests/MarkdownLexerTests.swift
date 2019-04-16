@@ -128,4 +128,18 @@ class MarkdownLexerTests: XCTestCase {
         XCTAssertEqual(Lexer(input: "`Hello`").tokenize(),
                        [.inlineCode, .text("Hello"), .inlineCode])
     }
+    
+    func test_codeBlock() {
+        let input = """
+                    Hello
+                    ```
+                    Code Here
+                    ```
+                    """
+        XCTAssertEqual(Lexer(input: input).tokenize(),
+                       [.text("Hello"), .newLine,
+                        .codeBlock, .newLine,
+                        .text("Code"), .whiteSpace, .text("Here"), .newLine,
+                        .codeBlock])
+    }
 }
