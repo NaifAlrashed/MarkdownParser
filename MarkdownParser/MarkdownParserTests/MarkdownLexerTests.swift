@@ -142,4 +142,14 @@ class MarkdownLexerTests: XCTestCase {
                         .text("Code"), .whiteSpace, .text("Here"), .newLine,
                         .codeBlock])
     }
+    
+    func test_orderedList() {
+        let input = """
+                    1) first
+                    2) second
+                    """
+        XCTAssertEqual(Lexer(input: input).tokenize(),
+                       [.int(1), .closeParenthesis, .whiteSpace, .text("first"), .newLine,
+                        .int(2), .closeParenthesis, .whiteSpace, .text("second"),])
+    }
 }

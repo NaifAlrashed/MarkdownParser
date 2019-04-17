@@ -29,6 +29,7 @@ extension Substring.UnicodeScalarView {
     mutating func nextToken() -> Token? {
         return readWhiteSpaceAndNewLine() ??
             readCharacterTokens() ??
+            readInteger() ??
             readText()
     }
     
@@ -153,6 +154,17 @@ extension Substring.UnicodeScalarView {
         return .codeBlock
     }
     
+    private mutating func readInteger() -> Token? {
+        var start = self
+        var allIntegers = Substring.UnicodeScalarView()
+        while let maybeInteger = popFirst(), CharacterSet.integers.contains(maybeInteger) {
+            allIntegers.append(maybeInteger)
+            start = self
+        }
+        self = start
+        return allIntegers.isEmpty ? nil: .int(Int(String(allIntegers))!)
+    }
+    
     private mutating func readText() -> Token? {
         var text = ""
         var start = self
@@ -172,4 +184,6 @@ extension Substring.UnicodeScalarView {
 extension CharacterSet {
     static let markDownKeyWords = CharacterSet(charactersIn: "`->!()[]_#*")
         .union(.whitespacesAndNewlines)
+        .union(.integers)
+    static let integers = CharacterSet(charactersIn: "0987654321")
 }

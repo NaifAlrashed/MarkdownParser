@@ -38,6 +38,8 @@ enum Token: Equatable {
     
     case inlineCode
     
+    case int(Int)
+    
     case whiteSpace
     case newLine
 }
