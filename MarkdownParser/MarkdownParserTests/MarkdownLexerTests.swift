@@ -84,14 +84,14 @@ class MarkdownLexerTests: XCTestCase {
     func test_link() {
         XCTAssertEqual(Lexer(input: "[link](google.com)").tokenize(), [
             .openBracket, .text("link"), .closeBracket,
-            .openParenthesis, .text("google.com"), .closeParenthesis
+            .openParenthesis, .text("google"), .dot, .text("com"), .closeParenthesis
         ])
     }
     
     func test_image() {
         XCTAssertEqual(Lexer(input: "![Image](https://url/a.png)").tokenize(), [
             .bang, .openBracket, .text("Image"), .closeBracket,
-            .openParenthesis, .text("https://url/a.png"), .closeParenthesis
+            .openParenthesis, .text("https://url/a"), .dot, .text("png"), .closeParenthesis
         ])
     }
     
@@ -143,7 +143,7 @@ class MarkdownLexerTests: XCTestCase {
                         .codeBlock])
     }
     
-    func test_orderedList() {
+    func test_orderedList_withParenthesis() {
         let input = """
                     1) first
                     2) second
@@ -151,5 +151,15 @@ class MarkdownLexerTests: XCTestCase {
         XCTAssertEqual(Lexer(input: input).tokenize(),
                        [.int(1), .closeParenthesis, .whiteSpace, .text("first"), .newLine,
                         .int(2), .closeParenthesis, .whiteSpace, .text("second"),])
+    }
+    
+    func test_orderedList_withDot() {
+        let input = """
+                    1. first
+                    2. second
+                    """
+        XCTAssertEqual(Lexer(input: input).tokenize(),
+                       [.int(1), .dot, .whiteSpace, .text("first"), .newLine,
+                        .int(2), .dot, .whiteSpace, .text("second"),])
     }
 }

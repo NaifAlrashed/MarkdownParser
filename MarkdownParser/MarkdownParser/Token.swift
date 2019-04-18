@@ -40,6 +40,8 @@ enum Token: Equatable {
     
     case int(Int)
     
+    case dot
+    
     case whiteSpace
     case newLine
 }
