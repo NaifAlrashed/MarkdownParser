@@ -162,4 +162,16 @@ class MarkdownLexerTests: XCTestCase {
                        [.int(1), .dot, .whiteSpace, .text("first"), .newLine,
                         .int(2), .dot, .whiteSpace, .text("second"),])
     }
+    
+    func test_horizontalLine_usingStars() {
+        XCTAssertEqual(Lexer(input: "***").tokenize(), [.doubleStars, .singleStar])
+    }
+    
+    func test_horizontalLine_usingUnderscors() {
+        XCTAssertEqual(Lexer(input: "___").tokenize(), [.doubleUnderScore, .singleUnderScore])
+    }
+    
+    func test_horizontalLine_usingDash() {
+        XCTAssertEqual(Lexer(input: "---").tokenize(), [.dash, .dash, .dash])
+    }
 }
