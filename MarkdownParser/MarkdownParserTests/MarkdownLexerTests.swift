@@ -41,32 +41,32 @@ class MarkdownLexerTests: XCTestCase {
     
     func test_h1() {
         XCTAssertEqual(Lexer(input: "# Hello World").tokenize(), [
-            .h1, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
+            .hashtag, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_h2() {
         XCTAssertEqual(Lexer(input: "## Hello World").tokenize(), [
-            .h2,.whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
+            .hashtag, .hashtag,.whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_h3() {
         XCTAssertEqual(Lexer(input: "### Hello World").tokenize(), [
-            .h3, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
+            .hashtag, .hashtag, .hashtag, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_h4() {
         XCTAssertEqual(Lexer(input: "#### Hello World").tokenize(), [
-            .h4, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
+            .hashtag, .hashtag, .hashtag, .hashtag, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_h5() {
         XCTAssertEqual(Lexer(input: "##### Hello World").tokenize(), [
-            .h5, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
+            .hashtag, .hashtag, .hashtag, .hashtag, .hashtag, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_h6() {
         XCTAssertEqual(Lexer(input: "###### Hello World").tokenize(), [
-            .h6, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
+            .hashtag, .hashtag, .hashtag, .hashtag, .hashtag, .hashtag, .whiteSpace, .text("Hello"), .whiteSpace, .text("World")])
     }
     
     func test_newLine() {
@@ -76,7 +76,7 @@ class MarkdownLexerTests: XCTestCase {
                     """
         XCTAssertEqual(Lexer(input: input).tokenize(),
                        [
-                        .h1, .whiteSpace, .text("Hello"), .newLine,
+                        .hashtag, .whiteSpace, .text("Hello"), .newLine,
                         .text("How"), .whiteSpace, .text("Are"), .whiteSpace, .text("You")
                        ])
     }

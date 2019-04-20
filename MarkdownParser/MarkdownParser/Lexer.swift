@@ -62,7 +62,7 @@ extension Substring.UnicodeScalarView {
         case "_":
             return readUnderScore(afterFirstChar: afterFirstCharPop)
         case "#":
-            return readTitle(start: start)
+            return .hashtag
         case "(":
             return .openParenthesis
         case ")":
@@ -103,45 +103,6 @@ extension Substring.UnicodeScalarView {
             self = afterFirstChar
             return .singleUnderScore
         }
-    }
-    
-    private mutating func readTitle(start: Substring.UnicodeScalarView) -> Token? {
-        
-        func generateTitle(numberOfHashtags: Int) -> Token? {
-            switch numberOfHashtags {
-            case 1:
-                return .h1
-            case 2:
-                return .h2
-            case 3:
-                return .h3
-            case 4:
-                return .h4
-            case 5:
-                return .h5
-            case 6:
-                return .h6
-            default:
-                return nil
-            }
-        }
-        
-        for numberOfHashtags in 1...6 {
-            let stateBeforeCurrentChar = self
-            if let nextChar = popFirst() {
-                if nextChar == "#" {
-                    continue
-                } else {
-                    self = stateBeforeCurrentChar
-                    return generateTitle(numberOfHashtags: numberOfHashtags)
-                }
-            } else {
-                self = start
-                return nil
-            }
-        }
-        self = start
-        return nil
     }
     
     private mutating func readCodeBlock() -> Token {
