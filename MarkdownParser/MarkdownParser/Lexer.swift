@@ -55,12 +55,11 @@ extension Substring.UnicodeScalarView {
             self = start
             return nil
         }
-        let afterFirstCharPop = self
         switch firstChar {
         case "*":
             return .star
         case "_":
-            return readUnderScore(afterFirstChar: afterFirstCharPop)
+            return .underScore
         case "#":
             return .hashtag
         case "(":
@@ -84,15 +83,6 @@ extension Substring.UnicodeScalarView {
         default:
             self = start
             return nil
-        }
-    }
-    
-    private mutating func readUnderScore(afterFirstChar: Substring.UnicodeScalarView) -> Token? {
-        if let secondChar = popFirst(), secondChar == "_" {
-            return .doubleUnderScore
-        } else {
-            self = afterFirstChar
-            return .singleUnderScore
         }
     }
     

@@ -12,8 +12,7 @@ enum Token: Equatable {
     
     case star
     
-    case doubleUnderScore
-    case singleUnderScore
+    case underScore
     
     case text(String)
     

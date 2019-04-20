@@ -23,13 +23,13 @@ class MarkdownLexerTests: XCTestCase {
     
     func test_bold_withDoubleUnderScores() {
         XCTAssertEqual(Lexer(input: "__Hello world__").tokenize(), [
-            .doubleUnderScore, .text("Hello"), .whiteSpace, .text("world"), .doubleUnderScore
+            .underScore, .underScore, .text("Hello"), .whiteSpace, .text("world"), .underScore, .underScore
         ])
     }
     
     func test_italics_withSingleUnderScore() {
         XCTAssertEqual(Lexer(input: "_Hello world_").tokenize(), [
-            .singleUnderScore, .text("Hello"), .whiteSpace, .text("world"), .singleUnderScore
+            .underScore, .text("Hello"), .whiteSpace, .text("world"), .underScore
         ])
     }
     
@@ -168,7 +168,7 @@ class MarkdownLexerTests: XCTestCase {
     }
     
     func test_horizontalLine_usingUnderscors() {
-        XCTAssertEqual(Lexer(input: "___").tokenize(), [.doubleUnderScore, .singleUnderScore])
+        XCTAssertEqual(Lexer(input: "___").tokenize(), [.underScore, .underScore, .underScore])
     }
     
     func test_horizontalLine_usingDash() {
