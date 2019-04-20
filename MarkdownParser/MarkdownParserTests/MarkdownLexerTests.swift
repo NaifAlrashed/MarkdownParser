@@ -126,7 +126,7 @@ class MarkdownLexerTests: XCTestCase {
     
     func test_inlineCode() {
         XCTAssertEqual(Lexer(input: "`Hello`").tokenize(),
-                       [.inlineCode, .text("Hello"), .inlineCode])
+                       [.graveAccent, .text("Hello"), .graveAccent])
     }
     
     func test_codeBlock() {
@@ -138,9 +138,9 @@ class MarkdownLexerTests: XCTestCase {
                     """
         XCTAssertEqual(Lexer(input: input).tokenize(),
                        [.text("Hello"), .newLine,
-                        .codeBlock, .newLine,
+                        .graveAccent, .graveAccent, .graveAccent, .newLine,
                         .text("Code"), .whiteSpace, .text("Here"), .newLine,
-                        .codeBlock])
+                        .graveAccent, .graveAccent, .graveAccent])
     }
     
     func test_orderedList_withParenthesis() {

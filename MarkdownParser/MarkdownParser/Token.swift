@@ -25,11 +25,10 @@ enum Token: Equatable {
     case closeParenthesis
     
     case block
-    case codeBlock
+    
+    case graveAccent
     
     case dash
-    
-    case inlineCode
     
     case int(Int)
     
