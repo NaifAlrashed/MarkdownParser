@@ -10,8 +10,7 @@ enum Token: Equatable {
     
     case hashtag
     
-    case doubleStars
-    case singleStar
+    case star
     
     case doubleUnderScore
     case singleUnderScore

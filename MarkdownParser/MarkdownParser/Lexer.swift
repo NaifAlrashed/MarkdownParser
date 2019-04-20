@@ -58,7 +58,7 @@ extension Substring.UnicodeScalarView {
         let afterFirstCharPop = self
         switch firstChar {
         case "*":
-            return readStar(afterFirstChar: afterFirstCharPop)
+            return .star//readStar(afterFirstChar: afterFirstCharPop)
         case "_":
             return readUnderScore(afterFirstChar: afterFirstCharPop)
         case "#":
@@ -87,14 +87,14 @@ extension Substring.UnicodeScalarView {
         }
     }
     
-    private mutating func readStar(afterFirstChar: Substring.UnicodeScalarView) -> Token? {
-        if let secondChar = popFirst(), secondChar == "*" {
-            return .doubleStars
-        } else {
-            self = afterFirstChar
-            return .singleStar
-        }
-    }
+//    private mutating func readStar(afterFirstChar: Substring.UnicodeScalarView) -> Token? {
+//        if let secondChar = popFirst(), secondChar == "*" {
+//            return .doubleStars
+//        } else {
+//            self = afterFirstChar
+//            return .singleStar
+//        }
+//    }
     
     private mutating func readUnderScore(afterFirstChar: Substring.UnicodeScalarView) -> Token? {
         if let secondChar = popFirst(), secondChar == "_" {

@@ -17,7 +17,7 @@ class MarkdownLexerTests: XCTestCase {
     
     func test_bold_withDoubleStars() {
         XCTAssertEqual(Lexer(input: "**Hello world**").tokenize(), [
-            .doubleStars, .text("Hello"), .whiteSpace, .text("world"), .doubleStars
+            .star, .star, .text("Hello"), .whiteSpace, .text("world"), .star, .star
         ])
     }
     
@@ -35,7 +35,7 @@ class MarkdownLexerTests: XCTestCase {
     
     func test_italics_withSingleStar() {
         XCTAssertEqual(Lexer(input: "*Hello world*").tokenize(), [
-            .singleStar, .text("Hello"), .whiteSpace, .text("world"), .singleStar
+            .star, .text("Hello"), .whiteSpace, .text("world"), .star
         ])
     }
     
@@ -107,9 +107,9 @@ class MarkdownLexerTests: XCTestCase {
                     * third element
                     """
         XCTAssertEqual(Lexer(input: input).tokenize(),
-                       [.singleStar, .whiteSpace, .text("first"), .whiteSpace, .text("element"), .newLine,
-                        .singleStar, .whiteSpace, .text("second"), .whiteSpace, .text("element"), .newLine,
-                        .singleStar, .whiteSpace, .text("third"), .whiteSpace, .text("element")])
+                       [.star, .whiteSpace, .text("first"), .whiteSpace, .text("element"), .newLine,
+                        .star, .whiteSpace, .text("second"), .whiteSpace, .text("element"), .newLine,
+                        .star, .whiteSpace, .text("third"), .whiteSpace, .text("element")])
     }
     
     func test_unorderedList_dash() {
@@ -164,7 +164,7 @@ class MarkdownLexerTests: XCTestCase {
     }
     
     func test_horizontalLine_usingStars() {
-        XCTAssertEqual(Lexer(input: "***").tokenize(), [.doubleStars, .singleStar])
+        XCTAssertEqual(Lexer(input: "***").tokenize(), [.star, .star, .star])
     }
     
     func test_horizontalLine_usingUnderscors() {
