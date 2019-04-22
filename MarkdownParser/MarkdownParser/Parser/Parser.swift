@@ -16,11 +16,15 @@ struct Parser {
     
     func parse() -> [Document] {
         let tokens = Lexer(input: input).tokenize()
-        return tokens.compactMap { token in
-            if case let .text(content) = token {
-                return .paragraph(content)
+        let text = tokens.reduce("") { totalString, token in
+            switch token {
+            case let .text(content):
+                return "\(totalString)\(content)"
+            case .whiteSpace:
+                return "\(totalString) "
+            default: return totalString
             }
-            return nil
         }
+        return text.isEmpty ? []: [.paragraph(text)]
     }
 }
