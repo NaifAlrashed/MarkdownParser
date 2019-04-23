@@ -20,6 +20,11 @@ class ParserTests: XCTestCase {
     }
     
     func test_parse_normalText_withSpace() {
-        XCTAssertEqual(Parser(input: "hello world").parse(), [.paragraph("hello world")])
+        XCTAssertEqual(Parser(input: "hello world").parse(), [
+            .paragraph("hello"), .paragraph(" "), .paragraph("world")])
+    }
+    
+    func test_h1() {
+        XCTAssertEqual(Parser(input: "# Hello").parse(), [.h1("Hello")])
     }
 }

@@ -15,16 +15,45 @@ struct Parser {
     }
     
     func parse() -> [Document] {
-        let tokens = Lexer(input: input).tokenize()
-        let text = tokens.reduce("") { totalString, token in
-            switch token {
-            case let .text(content):
-                return "\(totalString)\(content)"
-            case .whiteSpace:
-                return "\(totalString) "
-            default: return totalString
-            }
+        var tokens = ArraySlice(Lexer(input: input).tokenize())
+        var documents = [Document]()
+        while let document = tokens.nextDocument() {
+            documents.append(document)
         }
-        return text.isEmpty ? []: [.paragraph(text)]
+        return documents
+    }
+}
+
+extension ArraySlice where Element == Token {
+    mutating func nextDocument() -> Document? {
+        return parseLargeTitle() ??
+            parseParagraph()
+    }
+    
+    private mutating func parseLargeTitle() -> Document? {
+        let start = self
+        guard let firstToken = popFirst(),
+            firstToken == .hashtag,
+            let secondToken = popFirst(),
+            secondToken == .whiteSpace,
+            let thirdToken = popFirst(),
+            case let .text(content) = thirdToken
+        else {
+            self = start
+            return nil
+        }
+        return .h1(content)
+    }
+    
+    private mutating func parseParagraph() -> Document? {
+        guard let token = popFirst() else { return nil }
+        switch token {
+        case let .text(conent):
+            return .paragraph(conent)
+        case .whiteSpace:
+            return .paragraph(" ")
+        default:
+            return nil
+        }
     }
 }
