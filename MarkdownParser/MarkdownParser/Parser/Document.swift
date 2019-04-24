@@ -9,4 +9,5 @@
 enum Document: Equatable {
     case paragraph(String)
     case h1(String)
+    case h2(String)
 }

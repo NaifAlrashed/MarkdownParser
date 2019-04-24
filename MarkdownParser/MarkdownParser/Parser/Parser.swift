@@ -35,14 +35,24 @@ extension ArraySlice where Element == Token {
         guard let firstToken = popFirst(),
             firstToken == .hashtag,
             let secondToken = popFirst(),
-            secondToken == .whiteSpace,
-            let thirdToken = popFirst(),
-            case let .text(content) = thirdToken
+            let thirdToken = popFirst()
         else {
             self = start
             return nil
         }
-        return .h1(content)
+        
+        if secondToken == .whiteSpace, case let .text(content) = thirdToken {
+            return .h1(content)
+        } else if secondToken == .hashtag,
+            thirdToken == .whiteSpace,
+            let fourthToken = popFirst(),
+            case let .text(content) = fourthToken
+        {
+            return .h2(content)
+        } else {
+            self = start
+            return nil
+        }
     }
     
     private mutating func parseParagraph() -> Document? {
