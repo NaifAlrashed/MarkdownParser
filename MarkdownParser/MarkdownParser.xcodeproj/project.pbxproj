@@ -10,6 +10,7 @@
 		9E51FF87226CE32800564925 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E51FF86226CE32800564925 /* ParserTests.swift */; };
 		9E51FF89226CE37E00564925 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E51FF88226CE37E00564925 /* Parser.swift */; };
 		9E51FF8D226CE42400564925 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E51FF8C226CE42400564925 /* Document.swift */; };
+		9E51FF8F227232D600564925 /* TokenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E51FF8E227232D600564925 /* TokenContainer.swift */; };
 		9EF910C02257823700300A74 /* MarkdownParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF910B62257823700300A74 /* MarkdownParser.framework */; };
 		9EF910C72257823700300A74 /* MarkdownParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EF910B92257823700300A74 /* MarkdownParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9EF910D12257826000300A74 /* MarkdownLexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF910D02257826000300A74 /* MarkdownLexerTests.swift */; };
@@ -31,6 +32,7 @@
 		9E51FF86226CE32800564925 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
 		9E51FF88226CE37E00564925 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		9E51FF8C226CE42400564925 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		9E51FF8E227232D600564925 /* TokenContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenContainer.swift; sourceTree = "<group>"; };
 		9EF910B62257823700300A74 /* MarkdownParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarkdownParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF910B92257823700300A74 /* MarkdownParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarkdownParser.h; sourceTree = "<group>"; };
 		9EF910BA2257823700300A74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			children = (
 				9EF910D42257853E00300A74 /* Token.swift */,
 				9EF910D2225782A800300A74 /* Lexer.swift */,
+				9E51FF8E227232D600564925 /* TokenContainer.swift */,
 			);
 			path = Lexer;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E51FF8D226CE42400564925 /* Document.swift in Sources */,
+				9E51FF8F227232D600564925 /* TokenContainer.swift in Sources */,
 				9EF910D3225782A800300A74 /* Lexer.swift in Sources */,
 				9EF910D52257853E00300A74 /* Token.swift in Sources */,
 				9E51FF89226CE37E00564925 /* Parser.swift in Sources */,

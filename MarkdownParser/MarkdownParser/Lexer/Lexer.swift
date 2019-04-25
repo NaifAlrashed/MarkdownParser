@@ -14,8 +14,8 @@ struct Lexer {
         self.input = input
     }
     
-    func tokenize() -> [Token] {
-        var tokens = [Token]()
+    func tokenize() -> [TokenContainer] {
+        var tokens = [TokenContainer]()
         var parsableInput = Substring(input).unicodeScalars
         while let token = parsableInput.nextToken() {
             tokens.append(token)
@@ -26,30 +26,30 @@ struct Lexer {
 
 extension Substring.UnicodeScalarView {
     
-    mutating func nextToken() -> Token? {
+    mutating func nextToken() -> TokenContainer? {
         return readWhiteSpaceAndNewLine() ??
             readCharacterTokens() ??
             readInteger() ??
             readText()
     }
     
-    private mutating func readWhiteSpaceAndNewLine() -> Token? {
+    private mutating func readWhiteSpaceAndNewLine() -> TokenContainer? {
         let start = self
         guard let char = popFirst() else {
             self = start
             return nil
         }
         if CharacterSet.whitespaces.contains(char) {
-            return .whiteSpace
+            return TokenContainer(token: .whiteSpace)
         } else if CharacterSet.newlines.contains(char) {
-            return .newLine
+            return TokenContainer(token: .newLine)
         } else {
             self = start
             return nil
         }
     }
     
-    private mutating func readCharacterTokens() -> Token? {
+    private mutating func readCharacterTokens() -> TokenContainer? {
         let start = self
         guard let firstChar = popFirst() else {
             self = start
@@ -57,36 +57,36 @@ extension Substring.UnicodeScalarView {
         }
         switch firstChar {
         case "*":
-            return .star
+            return TokenContainer(token: .star)
         case "_":
-            return .underScore
+            return TokenContainer(token: .underScore)
         case "#":
-            return .hashtag
+            return TokenContainer(token: .hashtag)
         case "(":
-            return .openParenthesis
+            return TokenContainer(token: .openParenthesis)
         case ")":
-            return .closeParenthesis
+            return TokenContainer(token: .closeParenthesis)
         case "[":
-            return .openBracket
+            return TokenContainer(token: .openBracket)
         case "]":
-            return .closeBracket
+            return TokenContainer(token: .closeBracket)
         case "!":
-            return .bang
+            return TokenContainer(token: .bang)
         case ">":
-            return .block
+            return TokenContainer(token: .block)
         case "-":
-            return .dash
+            return TokenContainer(token: .dash)
         case "`":
-            return .graveAccent
+            return TokenContainer(token: .graveAccent)
         case ".":
-            return .dot
+            return TokenContainer(token: .dot)
         default:
             self = start
             return nil
         }
     }
     
-    private mutating func readInteger() -> Token? {
+    private mutating func readInteger() -> TokenContainer? {
         var start = self
         var allIntegers = Substring.UnicodeScalarView()
         while let maybeInteger = popFirst(), CharacterSet.integers.contains(maybeInteger) {
@@ -94,10 +94,10 @@ extension Substring.UnicodeScalarView {
             start = self
         }
         self = start
-        return allIntegers.isEmpty ? nil: .int(Int(String(allIntegers))!)
+        return allIntegers.isEmpty ? nil: TokenContainer(token: .int(Int(String(allIntegers))!))
     }
     
-    private mutating func readText() -> Token? {
+    private mutating func readText() -> TokenContainer? {
         var text = ""
         var start = self
         while let char = popFirst() {
@@ -105,11 +105,11 @@ extension Substring.UnicodeScalarView {
                 text.append(String(char))
             } else {
                 self = start
-                return text.isEmpty ? nil: .text(text)
+                return text.isEmpty ? nil: TokenContainer(token: .text(text))
             }
             start = self
         }
-        return text.isEmpty ? nil: .text(text)
+        return text.isEmpty ? nil: TokenContainer(token: .text(text))
     }
 }
 

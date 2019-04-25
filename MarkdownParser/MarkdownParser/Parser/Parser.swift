@@ -24,7 +24,7 @@ struct Parser {
     }
 }
 
-extension ArraySlice where Element == Token {
+extension ArraySlice where Element == TokenContainer {
     mutating func nextDocument() -> Document? {
         return parseLargeTitle() ??
             parseParagraph()
@@ -33,7 +33,7 @@ extension ArraySlice where Element == Token {
     private mutating func parseLargeTitle() -> Document? {
         let start = self
         guard let firstToken = popFirst(),
-            firstToken == .hashtag,
+            firstToken.token == .hashtag,
             let secondToken = popFirst(),
             let thirdToken = popFirst()
         else {
@@ -41,12 +41,12 @@ extension ArraySlice where Element == Token {
             return nil
         }
         
-        if secondToken == .whiteSpace, case let .text(content) = thirdToken {
+        if secondToken.token == .whiteSpace, case let .text(content) = thirdToken.token {
             return .h1(content)
-        } else if secondToken == .hashtag,
-            thirdToken == .whiteSpace,
+        } else if secondToken.token == .hashtag,
+            thirdToken.token == .whiteSpace,
             let fourthToken = popFirst(),
-            case let .text(content) = fourthToken
+            case let .text(content) = fourthToken.token
         {
             return .h2(content)
         } else {
@@ -57,7 +57,7 @@ extension ArraySlice where Element == Token {
     
     private mutating func parseParagraph() -> Document? {
         guard let token = popFirst() else { return nil }
-        switch token {
+        switch token.token {
         case let .text(conent):
             return .paragraph(conent)
         case .whiteSpace:
