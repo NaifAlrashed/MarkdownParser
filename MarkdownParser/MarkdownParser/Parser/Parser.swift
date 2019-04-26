@@ -56,14 +56,19 @@ extension ArraySlice where Element == TokenContainer {
     }
     
     private mutating func parseParagraph() -> Document? {
-        guard let token = popFirst() else { return nil }
-        switch token.token {
-        case let .text(conent):
-            return .paragraph(conent)
-        case .whiteSpace:
-            return .paragraph(" ")
-        default:
+        var start = self
+        var content: String?
+        while let token = popFirst(), !markdownTokenSet.contains(token.token) {
+            start = self
+            content = "\(content ?? "")\(token.stringRepresentation)"
+        }
+        self = start
+        if let content = content {
+            return .paragraph(content)
+        } else {
             return nil
         }
     }
 }
+
+let markdownTokenSet: Set<Token> = Set<Token>([.hashtag])

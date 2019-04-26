@@ -6,7 +6,7 @@
 //  Copyright © 2019 Naif Alrashed. All rights reserved.
 //
 
-enum Token: Equatable {
+enum Token: Hashable {
     
     case hashtag
     
