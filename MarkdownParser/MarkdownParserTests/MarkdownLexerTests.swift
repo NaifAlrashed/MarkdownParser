@@ -174,4 +174,15 @@ class MarkdownLexerTests: XCTestCase {
     func test_horizontalLine_usingDash() {
         XCTAssertEqual(Lexer(input: "---").tokenize().map { $0.token }, [.dash, .dash, .dash])
     }
+    
+    func test_stringRepresntation() {
+        let input = """
+                    .`->!()[]_#*123
+                    
+                    """
+        XCTAssertEqual(
+            Lexer(input: input).tokenize().map { $0.stringRepresentation },
+            [".", "`", "-", ">", "!", "(", ")", "[", "]", "_", "#", "*", "123", "\n"]
+        )
+    }
 }

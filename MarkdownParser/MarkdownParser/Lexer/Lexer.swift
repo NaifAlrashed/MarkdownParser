@@ -40,9 +40,9 @@ extension Substring.UnicodeScalarView {
             return nil
         }
         if CharacterSet.whitespaces.contains(char) {
-            return TokenContainer(token: .whiteSpace)
+            return TokenContainer(token: .whiteSpace, stringRepresentation: " ")
         } else if CharacterSet.newlines.contains(char) {
-            return TokenContainer(token: .newLine)
+            return TokenContainer(token: .newLine, stringRepresentation: "\n")
         } else {
             self = start
             return nil
@@ -57,29 +57,29 @@ extension Substring.UnicodeScalarView {
         }
         switch firstChar {
         case "*":
-            return TokenContainer(token: .star)
+            return TokenContainer(token: .star, stringRepresentation: "*")
         case "_":
-            return TokenContainer(token: .underScore)
+            return TokenContainer(token: .underScore, stringRepresentation: "_")
         case "#":
-            return TokenContainer(token: .hashtag)
+            return TokenContainer(token: .hashtag, stringRepresentation: "#")
         case "(":
-            return TokenContainer(token: .openParenthesis)
+            return TokenContainer(token: .openParenthesis, stringRepresentation: "(")
         case ")":
-            return TokenContainer(token: .closeParenthesis)
+            return TokenContainer(token: .closeParenthesis, stringRepresentation: ")")
         case "[":
-            return TokenContainer(token: .openBracket)
+            return TokenContainer(token: .openBracket, stringRepresentation: "[")
         case "]":
-            return TokenContainer(token: .closeBracket)
+            return TokenContainer(token: .closeBracket, stringRepresentation: "]")
         case "!":
-            return TokenContainer(token: .bang)
+            return TokenContainer(token: .bang, stringRepresentation: "!")
         case ">":
-            return TokenContainer(token: .block)
+            return TokenContainer(token: .block, stringRepresentation: ">")
         case "-":
-            return TokenContainer(token: .dash)
+            return TokenContainer(token: .dash, stringRepresentation: "-")
         case "`":
-            return TokenContainer(token: .graveAccent)
+            return TokenContainer(token: .graveAccent, stringRepresentation: "`")
         case ".":
-            return TokenContainer(token: .dot)
+            return TokenContainer(token: .dot, stringRepresentation: ".")
         default:
             self = start
             return nil
@@ -94,7 +94,7 @@ extension Substring.UnicodeScalarView {
             start = self
         }
         self = start
-        return allIntegers.isEmpty ? nil: TokenContainer(token: .int(Int(String(allIntegers))!))
+        return allIntegers.isEmpty ? nil: TokenContainer(token: .int(Int(String(allIntegers))!), stringRepresentation: String(allIntegers))
     }
     
     private mutating func readText() -> TokenContainer? {
@@ -105,11 +105,11 @@ extension Substring.UnicodeScalarView {
                 text.append(String(char))
             } else {
                 self = start
-                return text.isEmpty ? nil: TokenContainer(token: .text(text))
+                return text.isEmpty ? nil: TokenContainer(token: .text(text), stringRepresentation: text)
             }
             start = self
         }
-        return text.isEmpty ? nil: TokenContainer(token: .text(text))
+        return text.isEmpty ? nil: TokenContainer(token: .text(text), stringRepresentation: text)
     }
 }
 

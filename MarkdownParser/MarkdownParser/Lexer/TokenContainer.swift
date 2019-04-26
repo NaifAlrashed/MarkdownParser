@@ -8,4 +8,5 @@
 
 struct TokenContainer {
     let token: Token
+    let stringRepresentation: String
 }
