@@ -24,7 +24,7 @@ struct Lexer {
     }
 }
 
-extension Substring.UnicodeScalarView {
+private extension Substring.UnicodeScalarView {
     
     mutating func nextToken() -> TokenContainer? {
         return readWhiteSpaceAndNewLine() ??

@@ -24,7 +24,8 @@ struct Parser {
     }
 }
 
-extension ArraySlice where Element == TokenContainer {
+private extension ArraySlice where Element == TokenContainer {
+    
     mutating func nextDocument() -> Document? {
         return parseLargeTitle() ??
             parseParagraph()
@@ -56,17 +57,18 @@ extension ArraySlice where Element == TokenContainer {
     }
     
     private mutating func parseParagraph() -> Document? {
+        guard var content = popFirst()?.stringRepresentation else { return nil }
         var start = self
-        var content: String?
         while let token = popFirst(), !markdownTokenSet.contains(token.token) {
             start = self
-            content = "\(content ?? "")\(token.stringRepresentation)"
+            content = "\(content)\(token.stringRepresentation)"
         }
         self = start
-        if let content = content {
-            return .paragraph(content)
+        if let nextDocument = nextDocument(), case let .paragraph(nextContent) = nextDocument {
+            return .paragraph("\(content)\(nextContent)")
         } else {
-            return nil
+            self = start
+            return .paragraph(content)
         }
     }
 }

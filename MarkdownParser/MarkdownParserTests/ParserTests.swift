@@ -26,9 +26,11 @@ class ParserTests: XCTestCase {
     
     func test_h1() {
         XCTAssertEqual(Parser(input: "# Hello").parse(), [.h1("Hello")])
+        XCTAssertEqual(Parser(input: "#Hello").parse(), [.paragraph("#Hello")])
     }
     
     func test_h2() {
         XCTAssertEqual(Parser(input: "## Hello").parse(), [.h2("Hello")])
+        XCTAssertEqual(Parser(input: "##Hello").parse(), [.paragraph("##Hello")])
     }
 }
