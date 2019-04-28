@@ -32,28 +32,44 @@ private extension ArraySlice where Element == TokenContainer {
     }
     
     private mutating func parseLargeTitle() -> Document? {
+        func generateTitle(numberOfHashtags: Int, content: String) -> Document? {
+            switch numberOfHashtags {
+            case 1: return .h1(content)
+            case 2: return .h2(content)
+            case 3: return .h3(content)
+            case 4: return .h4(content)
+            case 5: return .h5(content)
+            case 6: return .h6(content)
+            default: return nil
+            }
+        }
         let start = self
-        guard let firstToken = popFirst(),
-            firstToken.token == .hashtag,
-            let secondToken = popFirst(),
-            let thirdToken = popFirst()
-        else {
-            self = start
-            return nil
+        var didParseWhiteSpace = false
+        for numberOfHashtags in 0...6 {
+            if let nextToken = popFirst() {
+                switch nextToken.token {
+                case .hashtag: continue
+                case .whiteSpace:
+                    didParseWhiteSpace = true
+                    break
+                default:
+                    self = start
+                    return nil
+                }
+            }
+            if !didParseWhiteSpace {
+                self = start
+                return nil
+            } else {
+                if case let .text(content)? = popFirst()?.token {
+                    return generateTitle(numberOfHashtags: numberOfHashtags, content: content)
+                } else {
+                    self = start
+                    return nil
+                }
+            }
         }
-        
-        if secondToken.token == .whiteSpace, case let .text(content) = thirdToken.token {
-            return .h1(content)
-        } else if secondToken.token == .hashtag,
-            thirdToken.token == .whiteSpace,
-            let fourthToken = popFirst(),
-            case let .text(content) = fourthToken.token
-        {
-            return .h2(content)
-        } else {
-            self = start
-            return nil
-        }
+        return nil
     }
     
     private mutating func parseParagraph() -> Document? {

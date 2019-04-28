@@ -11,4 +11,7 @@ enum Document: Equatable {
     case h1(String)
     case h2(String)
     case h3(String)
+    case h4(String)
+    case h5(String)
+    case h6(String)
 }
