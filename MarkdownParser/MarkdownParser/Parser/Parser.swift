@@ -28,6 +28,7 @@ private extension ArraySlice where Element == TokenContainer {
     
     mutating func nextDocument() -> Document? {
         return parseLargeTitle() ??
+            parseInlineCode() ??
             parseParagraph()
     }
     
@@ -70,6 +71,32 @@ private extension ArraySlice where Element == TokenContainer {
             }
         }
         return nil
+    }
+    
+    private mutating func parseInlineCode() -> Document? {
+        let start = self
+        var content = ""
+        guard case .graveAccent? = popFirst()?.token else {
+            self = start
+            return nil
+        }
+        var didParseEndGraveAccent = false
+        
+        while let nextTokenContainer = popFirst() {
+            switch nextTokenContainer.token {
+            case .graveAccent:
+                didParseEndGraveAccent = true
+                break
+            default:
+                content = "\(content)\(nextTokenContainer.stringRepresentation)"
+            }
+        }
+        if didParseEndGraveAccent {
+            return .inlineCode(content)
+        } else {
+            self = start
+            return nil
+        }
     }
     
     private mutating func parseParagraph() -> Document? {
