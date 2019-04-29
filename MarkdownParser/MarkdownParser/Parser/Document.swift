@@ -15,4 +15,5 @@ enum Document: Equatable {
     case h5(String)
     case h6(String)
     case inlineCode(String)
+    case bold(String)
 }

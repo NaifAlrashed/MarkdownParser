@@ -63,4 +63,21 @@ class ParserTests: XCTestCase {
                     """#
         XCTAssertEqual(Parser(input: input).parse(), [.paragraph(input)])
     }
+    
+    func test_bold() {
+        XCTAssertEqual(Parser(input: "__Hello, World__").parse(), [.bold("Hello, World")])
+        let multiLineUnderscoreInput = #"""
+                    __Hello
+                    , World")__
+                    """#
+        XCTAssertEqual(Parser(input: multiLineUnderscoreInput).parse(),
+                       [.paragraph(multiLineUnderscoreInput)])
+        
+        XCTAssertEqual(Parser(input: "**Hello, World**").parse(), [.bold("Hello, World")])
+        let multiLineStarInput = #"""
+                    **Hello
+                    , World")**
+                    """#
+        XCTAssertEqual(Parser(input: multiLineStarInput).parse(), [.paragraph(multiLineStarInput)])
+    }
 }

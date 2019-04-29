@@ -28,6 +28,7 @@ private extension ArraySlice where Element == TokenContainer {
     
     mutating func nextDocument() -> Document? {
         return parseLargeTitle() ??
+            parseBold() ??
             parseInlineCode() ??
             parseParagraph()
     }
@@ -71,6 +72,40 @@ private extension ArraySlice where Element == TokenContainer {
             }
         }
         return nil
+    }
+    
+    private mutating func parseBold() -> Document? {
+        let start = self
+        let boldTokenType: Token
+        switch (popFirst()?.token, popFirst()?.token) {
+        case (.underScore?, .underScore?): boldTokenType = .underScore
+        case (.star?, .star?): boldTokenType = .star
+        default:
+            self = start
+            return nil
+        }
+        
+        var didParseBoldTokenEnd = false
+        var content = ""
+        
+        while let nextTokenContainer = popFirst() {
+            switch nextTokenContainer.token {
+            case boldTokenType:
+                didParseBoldTokenEnd = true
+                break
+            case .newLine:
+                self = start
+                return nil
+            default:
+                content = "\(content)\(nextTokenContainer.stringRepresentation)"
+            }
+        }
+        if didParseBoldTokenEnd {
+            return .bold(content)
+        } else {
+            self = start
+            return nil
+        }
     }
     
     private mutating func parseInlineCode() -> Document? {
