@@ -87,6 +87,9 @@ private extension ArraySlice where Element == TokenContainer {
             case .graveAccent:
                 didParseEndGraveAccent = true
                 break
+            case .newLine:
+                self = start
+                return nil
             default:
                 content = "\(content)\(nextTokenContainer.stringRepresentation)"
             }

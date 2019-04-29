@@ -57,5 +57,10 @@ class ParserTests: XCTestCase {
     func test_inlineCode() {
         XCTAssertEqual(Parser(input: #"`print("Hello, world")`"#).parse(),
                        [.inlineCode(#"print("Hello, world")"#)])
+        let input = #"""
+                    `print("Hello
+                    ,world")`
+                    """#
+        XCTAssertEqual(Parser(input: input).parse(), [.paragraph(input)])
     }
 }
