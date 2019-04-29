@@ -80,4 +80,22 @@ class ParserTests: XCTestCase {
                     """#
         XCTAssertEqual(Parser(input: multiLineStarInput).parse(), [.paragraph(multiLineStarInput)])
     }
+    
+    func test_Italics() {
+        XCTAssertEqual(Parser(input: "_Hello, World_").parse(), [.italics("Hello, World")])
+        let multiLineUnderscoreInput = #"""
+                                        _Hello
+                                        , World")
+                                        """#
+        XCTAssertEqual(Parser(input: multiLineUnderscoreInput).parse(),
+                       [.paragraph(multiLineUnderscoreInput)])
+        XCTAssertEqual(Parser(input: "_Hello, World__").parse(), [.italics("Hello, World"), .paragraph("_")])
+        
+        XCTAssertEqual(Parser(input: "*Hello, World*").parse(), [.italics("Hello, World")])
+        let multiLineStarInput = #"""
+                                  *Hello
+                                  , World")*
+                                  """#
+        XCTAssertEqual(Parser(input: multiLineStarInput).parse(), [.paragraph(multiLineStarInput)])
+    }
 }
