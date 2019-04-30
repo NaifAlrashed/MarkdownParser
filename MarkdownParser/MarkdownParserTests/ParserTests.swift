@@ -101,22 +101,37 @@ class ParserTests: XCTestCase {
     
     func test_unorderedList() {
         let starUnorderedList = """
-                    * first element
-                    * second element
-                    * third element
-                    """
+                                * first element
+                                * second element
+                                * third element
+                                """
         XCTAssertEqual(Parser(input: starUnorderedList).parse(),
                        [.unorderedList(["first element",
                                         "second element",
                                         "third element"])])
         let dashUnorderedList = """
-                    - first element
-                    - second element
-                    - third element
-                    """
+                                - first element
+                                - second element
+                                - third element
+                                """
         XCTAssertEqual(Parser(input: dashUnorderedList).parse(),
                        [.unorderedList(["first element",
                                         "second element",
                                         "third element"])])
+    }
+    
+    func test_orderedList() {
+        let bracesOrderedList = """
+                                1) first element
+                                2) second element
+                                """
+        XCTAssertEqual(Parser(input: bracesOrderedList).parse(),
+                       [.orderedList(["first element", "second element"])])
+        let dotOrderedList = """
+                             1. first element
+                             2. second element
+                             """
+        XCTAssertEqual(Parser(input: dotOrderedList).parse(),
+                       [.orderedList(["first element", "second element"])])
     }
 }

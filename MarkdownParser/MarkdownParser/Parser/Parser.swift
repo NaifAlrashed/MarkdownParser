@@ -31,7 +31,7 @@ private extension ArraySlice where Element == TokenContainer {
             parseBold() ??
             parseItalics() ??
             parseInlineCode() ??
-            parseUnorderedList() ??
+            parseList() ??
             parseParagraph()
     }
     
@@ -171,30 +171,70 @@ private extension ArraySlice where Element == TokenContainer {
         }
     }
     
-    private mutating func parseUnorderedList() -> Document? {
+    private mutating func parseList() -> Document? {
         guard let firstToken = first?.token else { return nil }
-        let listToken: Token
-        if case .star = firstToken {
-            listToken = .star
-        } else if case .dash = firstToken {
-            listToken = .dash
-        } else {
-            return nil
+        guard index(after: startIndex) < endIndex else { return nil }
+        switch (firstToken, self[index(after: startIndex)].token) {
+        case (.star, _): return parseUnorderedList(using: .star)
+        case (.dash, _): return parseUnorderedList(using: .dash)
+        case (.int, .closeParenthesis): return parseOrderedList(using: .closeParenthesis)
+        case (.int, .dot): return parseOrderedList(using: .dot)
+        default: return nil
         }
-        var unorderedListContent = [String]()
+    }
+    
+    private mutating func parseUnorderedList(using token: Token) -> Document? {
+        var listContent = [String]()
         let start = self
         while let firstTokenContainer = popFirst(),
-            firstTokenContainer.token == listToken,
-        case .whiteSpace? = popFirst()?.token {
-            if let listItemContent = readStringUntilNewLine(), !listItemContent.isEmpty {
-                unorderedListContent.append(listItemContent)
-            }
+            firstTokenContainer.token == token,
+            case .whiteSpace? = popFirst()?.token {
+                if let listItemContent = readStringUntilNewLine(), !listItemContent.isEmpty {
+                    listContent.append(listItemContent)
+                }
         }
-        if unorderedListContent.isEmpty {
+        if listContent.isEmpty {
             self = start
             return nil
         } else {
-            return .unorderedList(unorderedListContent)
+            return .unorderedList(listContent)
+        }
+    }
+    
+    private mutating func parseOrderedList(using token: Token) -> Document? {
+        var listContent = [String]()
+        let start = self
+        while case .int? = popFirst()?.token,
+            let tokenContainer = popFirst(),
+            tokenContainer.token == token,
+        case .whiteSpace? = popFirst()?.token {
+            if let listItemContent = readStringUntilNewLine(), !listItemContent.isEmpty {
+                listContent.append(listItemContent)
+            }
+        }
+        if listContent.isEmpty {
+            self = start
+            return nil
+        } else {
+            return .orderedList(listContent)
+        }
+    }
+    
+    private mutating func parseList(tokenComparator token: Token) -> [String]? {
+        var listContent = [String]()
+        let start = self
+        while let firstTokenContainer = popFirst(),
+            firstTokenContainer.token == token,
+        case .whiteSpace? = popFirst()?.token {
+            if let listItemContent = readStringUntilNewLine(), !listItemContent.isEmpty {
+                listContent.append(listItemContent)
+            }
+        }
+        if listContent.isEmpty {
+            self = start
+            return nil
+        } else {
+            return listContent
         }
     }
     

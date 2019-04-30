@@ -18,4 +18,5 @@ enum Document: Equatable {
     case bold(String)
     case italics(String)
     case unorderedList([String])
+    case orderedList([String])
 }
