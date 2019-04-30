@@ -31,6 +31,7 @@ private extension ArraySlice where Element == TokenContainer {
             parseBold() ??
             parseItalics() ??
             parseInlineCode() ??
+            parseUnorderedList() ??
             parseParagraph()
     }
     
@@ -167,6 +168,52 @@ private extension ArraySlice where Element == TokenContainer {
         } else {
             self = start
             return nil
+        }
+    }
+    
+    private mutating func parseUnorderedList() -> Document? {
+        guard let firstToken = first?.token else { return nil }
+        let listToken: Token
+        if case .star = firstToken {
+            listToken = .star
+        } else if case .dash = firstToken {
+            listToken = .dash
+        } else {
+            return nil
+        }
+        var unorderedListContent = [String]()
+        let start = self
+        while let firstTokenContainer = popFirst(),
+            firstTokenContainer.token == listToken,
+        case .whiteSpace? = popFirst()?.token {
+            if let listItemContent = readStringUntilNewLine(), !listItemContent.isEmpty {
+                unorderedListContent.append(listItemContent)
+            }
+        }
+        if unorderedListContent.isEmpty {
+            self = start
+            return nil
+        } else {
+            return .unorderedList(unorderedListContent)
+        }
+    }
+    
+    private mutating func readStringUntilNewLine() -> String? {
+        var listItemContent = ""
+        let start = self
+        while let tokenContainer = popFirst() {
+            switch tokenContainer.token {
+            case .newLine:
+                return listItemContent
+            default:
+                listItemContent = "\(listItemContent)\(tokenContainer.stringRepresentation)"
+            }
+        }
+        if listItemContent.isEmpty {
+            self = start
+            return nil
+        } else {
+            return listItemContent
         }
     }
     
