@@ -32,6 +32,7 @@ private extension ArraySlice where Element == TokenContainer {
             parseItalics() ??
             parseInlineCode() ??
             parseList() ??
+            parseBlockQuote() ??
             parseParagraph()
     }
     
@@ -255,6 +256,26 @@ private extension ArraySlice where Element == TokenContainer {
         } else {
             return listItemContent
         }
+    }
+    
+    private mutating func parseBlockQuote() -> Document? {
+        let start = self
+        guard case .block? = popFirst()?.token, case .whiteSpace? = popFirst()?.token else {
+            self = start
+            return nil
+        }
+        var blockContent = ""
+        var beforeCurrent = self
+        while let content = readStringUntilNewLine() {
+            beforeCurrent = self
+            if case .newLine? = first?.token {
+                self = beforeCurrent
+                break
+            }
+            blockContent = "\(blockContent)\(content)"
+        }
+        self = beforeCurrent
+        return .block(blockContent)
     }
     
     private mutating func parseParagraph() -> Document? {

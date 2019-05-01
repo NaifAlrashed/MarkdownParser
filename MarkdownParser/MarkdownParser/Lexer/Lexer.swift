@@ -40,9 +40,9 @@ private extension Substring.UnicodeScalarView {
             return nil
         }
         if CharacterSet.whitespaces.contains(char) {
-            return TokenContainer(token: .whiteSpace, stringRepresentation: " ")
+            return TokenContainer(token: .whiteSpace, stringRepresentation: String(char))
         } else if CharacterSet.newlines.contains(char) {
-            return TokenContainer(token: .newLine, stringRepresentation: "\n")
+            return TokenContainer(token: .newLine, stringRepresentation: String(char))
         } else {
             self = start
             return nil

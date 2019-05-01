@@ -134,4 +134,14 @@ class ParserTests: XCTestCase {
         XCTAssertEqual(Parser(input: dotOrderedList).parse(),
                        [.orderedList(["first element", "second element"])])
     }
+    
+    func test_block() {
+        let content =
+        "The music video for Rihanna’s song American Oxygen depicts various moments from American history, including the inauguration of Barack Obama"
+        let block =
+        """
+        > \(content)
+        """
+        XCTAssertEqual(Parser(input: block).parse(), [.block(content)])
+    }
 }
