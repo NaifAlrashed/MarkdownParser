@@ -42,7 +42,7 @@ private extension Substring.UnicodeScalarView {
         if CharacterSet.whitespaces.contains(char) {
             return TokenContainer(token: .whiteSpace, stringRepresentation: String(char))
         } else if CharacterSet.newlines.contains(char) {
-            return TokenContainer(token: .newLine, stringRepresentation: "\n")
+            return TokenContainer(token: .newLine, stringRepresentation: String(char))
         } else {
             self = start
             return nil
