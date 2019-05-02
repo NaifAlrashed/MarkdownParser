@@ -147,4 +147,29 @@ class ParserTests: XCTestCase {
         """
         XCTAssertEqual(Parser(input: block).parse(), [.block(content)])
     }
+    
+    func test_codeBlock() {
+        let content =
+        """
+        print("Hello, World")
+        print("second line")
+        """
+        let codeBlock =
+        """
+        ```
+        \(content)
+        ```
+        """
+        
+        XCTAssertEqual(Parser(input: codeBlock).parse(),
+                       [.codeBlock(["\n",
+                                    #"""
+                                     print("Hello, World")
+
+                                     """#,
+                                    #"""
+                                     print("second line")
+
+                                     """#])])
+    }
 }

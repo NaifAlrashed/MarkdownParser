@@ -30,7 +30,7 @@ private extension ArraySlice where Element == TokenContainer {
         return parseLargeTitle() ??
             parseBold() ??
             parseItalics() ??
-            parseInlineCode() ??
+            parseCode() ??
             parseList() ??
             parseBlockQuote() ??
             parseParagraph()
@@ -141,6 +141,58 @@ private extension ArraySlice where Element == TokenContainer {
         }
         self = start
         return nil
+    }
+    
+    private mutating func parseCode() -> Document? {
+        if shouldParseCodeBlock, let document = parseCodeBlock() {
+            return document
+        } else if shouldParseInlineCode {
+            return parseInlineCode()
+        } else {
+            return nil
+        }
+    }
+    
+    private var shouldParseCodeBlock: Bool {
+        let secondIndex = index(after: startIndex)
+        let thirdIndex = index(after: secondIndex)
+        guard case .graveAccent? = first?.token,
+            secondIndex < endIndex,
+            thirdIndex < endIndex,
+            case .graveAccent = self[secondIndex].token,
+            case .graveAccent = self[thirdIndex].token
+            else { return false }
+        return true
+    }
+    
+    private var shouldParseInlineCode: Bool {
+        if case .graveAccent? = first?.token { return true }
+        return false
+    }
+    
+    private mutating func parseCodeBlock() -> Document? {
+        let start = self
+        guard case .graveAccent? = popFirst()?.token,
+            case .graveAccent? = popFirst()?.token,
+            case .graveAccent? = popFirst()?.token
+        else {
+            self = start
+            return nil
+        }
+        var linesOfCode = [String]()
+        
+        while let lineOfCode = readStringUntilNewLine() {
+            if lineOfCode == "```" {
+                break
+            }
+            linesOfCode.append(lineOfCode)
+        }
+        if linesOfCode.isEmpty {
+            self = start
+            return nil
+        } else {
+            return .codeBlock(linesOfCode)
+        }
     }
     
     private mutating func parseInlineCode() -> Document? {

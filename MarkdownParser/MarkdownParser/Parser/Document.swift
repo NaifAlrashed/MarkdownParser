@@ -20,4 +20,5 @@ enum Document: Equatable {
     case unorderedList([String])
     case orderedList([String])
     case block(String)
+    case codeBlock([String])
 }
