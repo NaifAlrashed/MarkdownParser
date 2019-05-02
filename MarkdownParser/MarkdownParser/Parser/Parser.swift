@@ -243,11 +243,9 @@ private extension ArraySlice where Element == TokenContainer {
         var listItemContent = ""
         let start = self
         while let tokenContainer = popFirst() {
-            switch tokenContainer.token {
-            case .newLine:
+            listItemContent = "\(listItemContent)\(tokenContainer.stringRepresentation)"
+            if case .newLine = tokenContainer.token {
                 return listItemContent
-            default:
-                listItemContent = "\(listItemContent)\(tokenContainer.stringRepresentation)"
             }
         }
         if listItemContent.isEmpty {

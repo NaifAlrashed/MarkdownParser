@@ -106,8 +106,8 @@ class ParserTests: XCTestCase {
                                 * third element
                                 """
         XCTAssertEqual(Parser(input: starUnorderedList).parse(),
-                       [.unorderedList(["first element",
-                                        "second element",
+                       [.unorderedList(["first element\n",
+                                        "second element\n",
                                         "third element"])])
         let dashUnorderedList = """
                                 - first element
@@ -115,8 +115,8 @@ class ParserTests: XCTestCase {
                                 - third element
                                 """
         XCTAssertEqual(Parser(input: dashUnorderedList).parse(),
-                       [.unorderedList(["first element",
-                                        "second element",
+                       [.unorderedList(["first element\n",
+                                        "second element\n",
                                         "third element"])])
     }
     
@@ -126,18 +126,21 @@ class ParserTests: XCTestCase {
                                 2) second element
                                 """
         XCTAssertEqual(Parser(input: bracesOrderedList).parse(),
-                       [.orderedList(["first element", "second element"])])
+                       [.orderedList(["first element\n", "second element"])])
         let dotOrderedList = """
                              1. first element
                              2. second element
                              """
         XCTAssertEqual(Parser(input: dotOrderedList).parse(),
-                       [.orderedList(["first element", "second element"])])
+                       [.orderedList(["first element\n", "second element"])])
     }
     
     func test_block() {
         let content =
-        "The music video for Rihanna’s song American Oxygen depicts various moments from American history, including the inauguration of Barack Obama"
+        """
+        The music video for Rihanna’s song American Oxygen depicts various
+        moments from American history, including the inauguration of Barack Obama
+        """
         let block =
         """
         > \(content)
