@@ -144,30 +144,11 @@ private extension ArraySlice where Element == TokenContainer {
     }
     
     private mutating func parseCode() -> Document? {
-        if shouldParseCodeBlock, let document = parseCodeBlock() {
+        if let document = parseCodeBlock() {
             return document
-        } else if shouldParseInlineCode {
-            return parseInlineCode()
         } else {
-            return nil
+            return parseInlineCode()
         }
-    }
-    
-    private var shouldParseCodeBlock: Bool {
-        let secondIndex = index(after: startIndex)
-        let thirdIndex = index(after: secondIndex)
-        guard case .graveAccent? = first?.token,
-            secondIndex < endIndex,
-            thirdIndex < endIndex,
-            case .graveAccent = self[secondIndex].token,
-            case .graveAccent = self[thirdIndex].token
-            else { return false }
-        return true
-    }
-    
-    private var shouldParseInlineCode: Bool {
-        if case .graveAccent? = first?.token { return true }
-        return false
     }
     
     private mutating func parseCodeBlock() -> Document? {
