@@ -1,0 +1,16 @@
+PODS:
+  - MarkdownParser (0.1.0)
+
+DEPENDENCIES:
+  - MarkdownParser (from `../`)
+
+EXTERNAL SOURCES:
+  MarkdownParser:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MarkdownParser: 04e7afbce223d5816b884c948af01aee9f97aa02
+
+PODFILE CHECKSUM: 46d8573f7435959ce5afa036228aef4b0a0f8b64
+
+COCOAPODS: 1.6.1
