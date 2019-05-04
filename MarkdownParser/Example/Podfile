@@ -1,0 +1,6 @@
+use_frameworks!
+target 'MarkdownParser_Tests' do
+  pod 'MarkdownParser', :path => '../'
+  
+  
+end
