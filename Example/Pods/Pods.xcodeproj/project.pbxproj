@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		107ED638E0FE3426569151F37E477676 /* MarkdownParser-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B6D8FD64581C7C64F426DCFEAF9C488 /* MarkdownParser-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14B458753DD35180B3E47B20A6EB4929 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		1572B698BFFFC68800CC092989AD0B02 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E00523E995C10B1ABBD19CF4A47BA74 /* ReplaceMe.swift */; };
 		81105DA840DC3F0B209139406F8D62AB /* Pods-MarkdownParser_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8C633B04BAE70AB802A617666B76F9 /* Pods-MarkdownParser_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		953F8DE3F0832677CB16D8131C5B4D26 /* Pods-MarkdownParser_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDEEEA527B9B4F171DA2E2558626449 /* Pods-MarkdownParser_Tests-dummy.m */; };
 		9EF141FB227DE7FF001AB27C /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF141F5227DE7FF001AB27C /* Lexer.swift */; };
@@ -37,7 +36,6 @@
 		136A7F13FBD1AEF68BE5E3ECC4A15D8C /* Pods-MarkdownParser_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MarkdownParser_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2E229017E64E2F6F300C8082B7112161 /* Pods-MarkdownParser_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MarkdownParser_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3047016FAD7B0C6ADA82FAC75ED808BF /* MarkdownParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarkdownParser.xcconfig; sourceTree = "<group>"; };
-		3E00523E995C10B1ABBD19CF4A47BA74 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = MarkdownParser/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		48ED9BA890449F24D47E62E03BEF5C52 /* Pods-MarkdownParser_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MarkdownParser_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4D270FA46149C9FA84C03E14443255AB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4DB6394C345CFA198B8B9CA4A4802CCD /* Pods-MarkdownParser_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MarkdownParser_Tests-Info.plist"; sourceTree = "<group>"; };
@@ -157,12 +155,19 @@
 			path = Parser;
 			sourceTree = "<group>";
 		};
-		B26689CE2D40D3B5903507CB47677CEE /* MarkdownParser */ = {
+		9EF142082281C75E001AB27C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				9EF141F4227DE7FF001AB27C /* Lexer */,
 				9EF141F8227DE7FF001AB27C /* Parser */,
-				3E00523E995C10B1ABBD19CF4A47BA74 /* ReplaceMe.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B26689CE2D40D3B5903507CB47677CEE /* MarkdownParser */ = {
+			isa = PBXGroup;
+			children = (
+				9EF142082281C75E001AB27C /* Sources */,
 				B30CA45B850B7178AAD8F57E8D70AFED /* Pod */,
 				22E9E83E828E4DB2FD64939E0ED9C914 /* Support Files */,
 			);
@@ -333,7 +338,6 @@
 				9EF141FD227DE7FF001AB27C /* Token.swift in Sources */,
 				9EF141FE227DE7FF001AB27C /* Document.swift in Sources */,
 				9EF141FB227DE7FF001AB27C /* Lexer.swift in Sources */,
-				1572B698BFFFC68800CC092989AD0B02 /* ReplaceMe.swift in Sources */,
 				9EF141FC227DE7FF001AB27C /* TokenContainer.swift in Sources */,
 				9EF141FF227DE7FF001AB27C /* Parser.swift in Sources */,
 			);
