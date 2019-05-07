@@ -78,3 +78,4 @@ fastlane/test_output
 iOSInjectionProject/
 *.xcuserstate
 /MarkdownParser/MarkdownParser.xcodeproj/project.xcworkspace/xcuserdata/naifalrashed.xcuserdatad/UserInterfaceState.xcuserstate
+.DS_Store
