@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		107ED638E0FE3426569151F37E477676 /* MarkdownParser-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B6D8FD64581C7C64F426DCFEAF9C488 /* MarkdownParser-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14B458753DD35180B3E47B20A6EB4929 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		45CA3C5E38BB129545C38B20D8CF8AAC /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B147CC76529E9D3EBA964D5A3D488E /* Document.swift */; };
+		682D8F81D95F412EA355F772AE62186A /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E53326D13B3222CEA4172E224345E30 /* Lexer.swift */; };
+		69B911C2BD44CF516699843F5BE7D8C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		81105DA840DC3F0B209139406F8D62AB /* Pods-MarkdownParser_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8C633B04BAE70AB802A617666B76F9 /* Pods-MarkdownParser_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		953F8DE3F0832677CB16D8131C5B4D26 /* Pods-MarkdownParser_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDEEEA527B9B4F171DA2E2558626449 /* Pods-MarkdownParser_Tests-dummy.m */; };
-		9EF141FB227DE7FF001AB27C /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF141F5227DE7FF001AB27C /* Lexer.swift */; };
-		9EF141FC227DE7FF001AB27C /* TokenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF141F6227DE7FF001AB27C /* TokenContainer.swift */; };
-		9EF141FD227DE7FF001AB27C /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF141F7227DE7FF001AB27C /* Token.swift */; };
-		9EF141FE227DE7FF001AB27C /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF141F9227DE7FF001AB27C /* Document.swift */; };
-		9EF141FF227DE7FF001AB27C /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF141FA227DE7FF001AB27C /* Parser.swift */; };
-		A347479BC066AFE6A038A05F85D7AEEB /* MarkdownParser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5394696C3E279D5E987C0DD98E1E5D /* MarkdownParser-dummy.m */; };
-		D452487D8B97E3B4FF54DBABD697C690 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		A0ADA33BEDFEC3ACFC0D1022E38E0DDF /* MarkdownParser-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 67857FD43AC337D7A493128725B22E60 /* MarkdownParser-dummy.m */; };
+		ABE82785DEABEFA18CF7E32D62955396 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93362D9CCE907FE7EFD1E2364FC0C19 /* Token.swift */; };
+		B88D598972C12A2E1B60D249953D5102 /* TokenContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB88E619F9EBCFF727D18B210E9119B /* TokenContainer.swift */; };
+		B97B7A425368A24244C42FDDDBB0ABA2 /* MarkdownParser-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1CA6BD6F8E577E5E0B2D9FF6B55FBCD /* MarkdownParser-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D490DEF013AFE73C70EB3585351E4218 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00CA80C2AD30580F81813ABC6B56EB0 /* Parser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,42 +25,50 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4398E336A77513A712A8E6E30783B982;
+			remoteGlobalIDString = 6659E5DA7676E0B46E9251A72D96D5FA;
 			remoteInfo = MarkdownParser;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0346ED7583A20487CAA77A97DB308267 /* MarkdownParser.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MarkdownParser.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		0CF320611685E01BFC74FB0B67C497A6 /* MarkdownParser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownParser-prefix.pch"; sourceTree = "<group>"; };
+		0691B4B071B778796277A6702CD63D77 /* MarkdownParser-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownParser-prefix.pch"; sourceTree = "<group>"; };
 		136A7F13FBD1AEF68BE5E3ECC4A15D8C /* Pods-MarkdownParser_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MarkdownParser_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2E138A497B5340025173B2E019EEB04A /* MarkdownParser.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MarkdownParser.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		2E229017E64E2F6F300C8082B7112161 /* Pods-MarkdownParser_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MarkdownParser_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		3047016FAD7B0C6ADA82FAC75ED808BF /* MarkdownParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarkdownParser.xcconfig; sourceTree = "<group>"; };
+		3E53326D13B3222CEA4172E224345E30 /* Lexer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
 		48ED9BA890449F24D47E62E03BEF5C52 /* Pods-MarkdownParser_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MarkdownParser_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		4D270FA46149C9FA84C03E14443255AB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4DB6394C345CFA198B8B9CA4A4802CCD /* Pods-MarkdownParser_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MarkdownParser_Tests-Info.plist"; sourceTree = "<group>"; };
 		4F9E067AF3BCC4A82B1157CEC9634D53 /* Pods-MarkdownParser_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MarkdownParser_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		515E975918C893E5FB772C700DCE15E8 /* Pods-MarkdownParser_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MarkdownParser_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		545B39F4AB3C035F90C1B2F46AB5963B /* Pods_MarkdownParser_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarkdownParser_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A63C68145527D992F43B68C6C2B5D50 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		6B6D8FD64581C7C64F426DCFEAF9C488 /* MarkdownParser-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownParser-umbrella.h"; sourceTree = "<group>"; };
-		6FE3BB871DD879D014F628BB30C45FDC /* MarkdownParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarkdownParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B5394696C3E279D5E987C0DD98E1E5D /* MarkdownParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarkdownParser-dummy.m"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9EF141F5227DE7FF001AB27C /* Lexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
-		9EF141F6227DE7FF001AB27C /* TokenContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenContainer.swift; sourceTree = "<group>"; };
-		9EF141F7227DE7FF001AB27C /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		9EF141F9227DE7FF001AB27C /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		9EF141FA227DE7FF001AB27C /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		545B39F4AB3C035F90C1B2F46AB5963B /* Pods_MarkdownParser_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MarkdownParser_Tests.framework; path = "Pods-MarkdownParser_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AD78C3F16E84005D75C3113EC3B7A48 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		5CB88E619F9EBCFF727D18B210E9119B /* TokenContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TokenContainer.swift; sourceTree = "<group>"; };
+		67857FD43AC337D7A493128725B22E60 /* MarkdownParser-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarkdownParser-dummy.m"; sourceTree = "<group>"; };
+		6A6C5CA5534AD5EA04DE034437B863DD /* MarkdownParser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MarkdownParser.modulemap; sourceTree = "<group>"; };
+		6FE3BB871DD879D014F628BB30C45FDC /* MarkdownParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MarkdownParser.framework; path = MarkdownParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A9841E2C49807E41DF78F0C6C2ECCF35 /* MarkdownParser-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MarkdownParser-Info.plist"; sourceTree = "<group>"; };
 		AA8C633B04BAE70AB802A617666B76F9 /* Pods-MarkdownParser_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MarkdownParser_Tests-umbrella.h"; sourceTree = "<group>"; };
-		C1EE5B1046610BF69A027BA3C5A31B49 /* MarkdownParser.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MarkdownParser.modulemap; sourceTree = "<group>"; };
+		AFB8B42AC80A5410A8DF69975AA1ABF3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		C6B147CC76529E9D3EBA964D5A3D488E /* Document.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		C87F076317405D93BEB1B66CEC3DFCF2 /* MarkdownParser.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MarkdownParser.xcconfig; sourceTree = "<group>"; };
+		C93362D9CCE907FE7EFD1E2364FC0C19 /* Token.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CFDEEEA527B9B4F171DA2E2558626449 /* Pods-MarkdownParser_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MarkdownParser_Tests-dummy.m"; sourceTree = "<group>"; };
+		E00CA80C2AD30580F81813ABC6B56EB0 /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		F1CA6BD6F8E577E5E0B2D9FF6B55FBCD /* MarkdownParser-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MarkdownParser-umbrella.h"; sourceTree = "<group>"; };
 		F4C7A97ACD96E1A01FAC6852E2A0A7D9 /* Pods-MarkdownParser_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MarkdownParser_Tests.modulemap"; sourceTree = "<group>"; };
-		FDCDBF68161E9FCC0A3049542B08FC6A /* MarkdownParser-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MarkdownParser-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5DA8CFA426AB89F7B1B152768354D757 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69B911C2BD44CF516699843F5BE7D8C6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		60CDAE6F3EA11004E81DD9285015A8F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -69,37 +77,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA3BE4388CC6FC0CCD7E649C18878FBA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D452487D8B97E3B4FF54DBABD697C690 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		189286EAC2CEAE04AD25AB436EB090BA /* Development Pods */ = {
+		08F1D0102D55144227BBFF69922F521B /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				B26689CE2D40D3B5903507CB47677CEE /* MarkdownParser */,
+				5AD78C3F16E84005D75C3113EC3B7A48 /* LICENSE */,
+				2E138A497B5340025173B2E019EEB04A /* MarkdownParser.podspec */,
+				AFB8B42AC80A5410A8DF69975AA1ABF3 /* README.md */,
 			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		22E9E83E828E4DB2FD64939E0ED9C914 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C1EE5B1046610BF69A027BA3C5A31B49 /* MarkdownParser.modulemap */,
-				3047016FAD7B0C6ADA82FAC75ED808BF /* MarkdownParser.xcconfig */,
-				8B5394696C3E279D5E987C0DD98E1E5D /* MarkdownParser-dummy.m */,
-				FDCDBF68161E9FCC0A3049542B08FC6A /* MarkdownParser-Info.plist */,
-				0CF320611685E01BFC74FB0B67C497A6 /* MarkdownParser-prefix.pch */,
-				6B6D8FD64581C7C64F426DCFEAF9C488 /* MarkdownParser-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/MarkdownParser";
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		408A9415A5E68ACDEAA854C8D3A3851C /* Pods-MarkdownParser_Tests */ = {
@@ -119,6 +107,26 @@
 			path = "Target Support Files/Pods-MarkdownParser_Tests";
 			sourceTree = "<group>";
 		};
+		54D1D74A8841BE160D9E86B06141DB02 /* MarkdownParser */ = {
+			isa = PBXGroup;
+			children = (
+				909901FF5F570D07FC54E376CE97DA80 /* Lexer */,
+				8F73C606B34D90B2B34B7B2FF539006B /* Parser */,
+				08F1D0102D55144227BBFF69922F521B /* Pod */,
+				C8D468826A39511EBBCED54B0FC909EA /* Support Files */,
+			);
+			name = MarkdownParser;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		62F2526695C0726D468E669EA6B6C124 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				54D1D74A8841BE160D9E86B06141DB02 /* MarkdownParser */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		806FACFABDBFD756B7E582B20CC2B5E6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +134,27 @@
 				545B39F4AB3C035F90C1B2F46AB5963B /* Pods_MarkdownParser_Tests.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8F73C606B34D90B2B34B7B2FF539006B /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				C6B147CC76529E9D3EBA964D5A3D488E /* Document.swift */,
+				E00CA80C2AD30580F81813ABC6B56EB0 /* Parser.swift */,
+			);
+			name = Parser;
+			path = Sources/Parser;
+			sourceTree = "<group>";
+		};
+		909901FF5F570D07FC54E376CE97DA80 /* Lexer */ = {
+			isa = PBXGroup;
+			children = (
+				3E53326D13B3222CEA4172E224345E30 /* Lexer.swift */,
+				C93362D9CCE907FE7EFD1E2364FC0C19 /* Token.swift */,
+				5CB88E619F9EBCFF727D18B210E9119B /* TokenContainer.swift */,
+			);
+			name = Lexer;
+			path = Sources/Lexer;
 			sourceTree = "<group>";
 		};
 		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
@@ -136,55 +165,6 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		9EF141F4227DE7FF001AB27C /* Lexer */ = {
-			isa = PBXGroup;
-			children = (
-				9EF141F5227DE7FF001AB27C /* Lexer.swift */,
-				9EF141F6227DE7FF001AB27C /* TokenContainer.swift */,
-				9EF141F7227DE7FF001AB27C /* Token.swift */,
-			);
-			path = Lexer;
-			sourceTree = "<group>";
-		};
-		9EF141F8227DE7FF001AB27C /* Parser */ = {
-			isa = PBXGroup;
-			children = (
-				9EF141F9227DE7FF001AB27C /* Document.swift */,
-				9EF141FA227DE7FF001AB27C /* Parser.swift */,
-			);
-			path = Parser;
-			sourceTree = "<group>";
-		};
-		9EF142082281C75E001AB27C /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				9EF141F4227DE7FF001AB27C /* Lexer */,
-				9EF141F8227DE7FF001AB27C /* Parser */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		B26689CE2D40D3B5903507CB47677CEE /* MarkdownParser */ = {
-			isa = PBXGroup;
-			children = (
-				9EF142082281C75E001AB27C /* Sources */,
-				B30CA45B850B7178AAD8F57E8D70AFED /* Pod */,
-				22E9E83E828E4DB2FD64939E0ED9C914 /* Support Files */,
-			);
-			name = MarkdownParser;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		B30CA45B850B7178AAD8F57E8D70AFED /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				6A63C68145527D992F43B68C6C2B5D50 /* LICENSE */,
-				0346ED7583A20487CAA77A97DB308267 /* MarkdownParser.podspec */,
-				4D270FA46149C9FA84C03E14443255AB /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		C10805BCF01780F424AFB23445D8B437 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,11 +173,25 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		C8D468826A39511EBBCED54B0FC909EA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A6C5CA5534AD5EA04DE034437B863DD /* MarkdownParser.modulemap */,
+				C87F076317405D93BEB1B66CEC3DFCF2 /* MarkdownParser.xcconfig */,
+				67857FD43AC337D7A493128725B22E60 /* MarkdownParser-dummy.m */,
+				A9841E2C49807E41DF78F0C6C2ECCF35 /* MarkdownParser-Info.plist */,
+				0691B4B071B778796277A6702CD63D77 /* MarkdownParser-prefix.pch */,
+				F1CA6BD6F8E577E5E0B2D9FF6B55FBCD /* MarkdownParser-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/MarkdownParser";
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				189286EAC2CEAE04AD25AB436EB090BA /* Development Pods */,
+				62F2526695C0726D468E669EA6B6C124 /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				806FACFABDBFD756B7E582B20CC2B5E6 /* Products */,
 				C10805BCF01780F424AFB23445D8B437 /* Targets Support Files */,
@@ -215,19 +209,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		373E1AE266A74E18DC26B410AF881361 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B97B7A425368A24244C42FDDDBB0ABA2 /* MarkdownParser-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7D12DC36D8857F97E8AF0DA9EB2CC446 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				81105DA840DC3F0B209139406F8D62AB /* Pods-MarkdownParser_Tests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		809A0D512533452B19BA4125675E0591 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				107ED638E0FE3426569151F37E477676 /* MarkdownParser-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +247,14 @@
 			productReference = 545B39F4AB3C035F90C1B2F46AB5963B /* Pods_MarkdownParser_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4398E336A77513A712A8E6E30783B982 /* MarkdownParser */ = {
+		6659E5DA7676E0B46E9251A72D96D5FA /* MarkdownParser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F9E58BE717B660A84C29B7CB06A816E1 /* Build configuration list for PBXNativeTarget "MarkdownParser" */;
+			buildConfigurationList = 9B11874097B26447B24AA81CC48B43A2 /* Build configuration list for PBXNativeTarget "MarkdownParser" */;
 			buildPhases = (
-				809A0D512533452B19BA4125675E0591 /* Headers */,
-				A693BA394A5F99F2157E45B7B722AA82 /* Sources */,
-				CA3BE4388CC6FC0CCD7E649C18878FBA /* Frameworks */,
-				332DD6A1D13897B44BBE60A457700742 /* Resources */,
+				373E1AE266A74E18DC26B410AF881361 /* Headers */,
+				76D25191ED7201C037F420141FB8AD24 /* Sources */,
+				5DA8CFA426AB89F7B1B152768354D757 /* Frameworks */,
+				033423ED5B8982F0FE77346AF8DB5792 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -279,18 +273,12 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
-				TargetAttributes = {
-					4398E336A77513A712A8E6E30783B982 = {
-						LastSwiftMigration = 1020;
-					};
-				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -298,14 +286,14 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4398E336A77513A712A8E6E30783B982 /* MarkdownParser */,
+				6659E5DA7676E0B46E9251A72D96D5FA /* MarkdownParser */,
 				1C508AE2B1D371BE4208ECE675D50FB3 /* Pods-MarkdownParser_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		332DD6A1D13897B44BBE60A457700742 /* Resources */ = {
+		033423ED5B8982F0FE77346AF8DB5792 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -322,24 +310,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		76D25191ED7201C037F420141FB8AD24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45CA3C5E38BB129545C38B20D8CF8AAC /* Document.swift in Sources */,
+				682D8F81D95F412EA355F772AE62186A /* Lexer.swift in Sources */,
+				A0ADA33BEDFEC3ACFC0D1022E38E0DDF /* MarkdownParser-dummy.m in Sources */,
+				D490DEF013AFE73C70EB3585351E4218 /* Parser.swift in Sources */,
+				ABE82785DEABEFA18CF7E32D62955396 /* Token.swift in Sources */,
+				B88D598972C12A2E1B60D249953D5102 /* TokenContainer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A1BF8463D2C252BF93046015CE4EF1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				953F8DE3F0832677CB16D8131C5B4D26 /* Pods-MarkdownParser_Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A693BA394A5F99F2157E45B7B722AA82 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A347479BC066AFE6A038A05F85D7AEEB /* MarkdownParser-dummy.m in Sources */,
-				9EF141FD227DE7FF001AB27C /* Token.swift in Sources */,
-				9EF141FE227DE7FF001AB27C /* Document.swift in Sources */,
-				9EF141FB227DE7FF001AB27C /* Lexer.swift in Sources */,
-				9EF141FC227DE7FF001AB27C /* TokenContainer.swift in Sources */,
-				9EF141FF227DE7FF001AB27C /* Parser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,44 +337,12 @@
 		7F519D4611D52DE65E2195189857B749 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MarkdownParser;
-			target = 4398E336A77513A712A8E6E30783B982 /* MarkdownParser */;
+			target = 6659E5DA7676E0B46E9251A72D96D5FA /* MarkdownParser */;
 			targetProxy = 9C90AC375BD8D40C16B240A2161174D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		233ED4BF4A4695AA7222E80F6143878F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3047016FAD7B0C6ADA82FAC75ED808BF /* MarkdownParser.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MarkdownParser/MarkdownParser-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MarkdownParser/MarkdownParser-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MarkdownParser/MarkdownParser.modulemap";
-				PRODUCT_MODULE_NAME = MarkdownParser;
-				PRODUCT_NAME = MarkdownParser;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		283B42E28EABFCB9466324281AAC82B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 48ED9BA890449F24D47E62E03BEF5C52 /* Pods-MarkdownParser_Tests.debug.xcconfig */;
@@ -414,37 +370,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		307533C6059656FD7C6B68B0B79A75AD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3047016FAD7B0C6ADA82FAC75ED808BF /* MarkdownParser.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MarkdownParser/MarkdownParser-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MarkdownParser/MarkdownParser-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MarkdownParser/MarkdownParser.modulemap";
-				PRODUCT_MODULE_NAME = MarkdownParser;
-				PRODUCT_NAME = MarkdownParser;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -484,6 +409,37 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		95E3C57145C4BED56FD7168AE11E3764 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C87F076317405D93BEB1B66CEC3DFCF2 /* MarkdownParser.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MarkdownParser/MarkdownParser-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MarkdownParser/MarkdownParser-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MarkdownParser/MarkdownParser.modulemap";
+				PRODUCT_MODULE_NAME = MarkdownParser;
+				PRODUCT_NAME = MarkdownParser;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		AB4D69770D8ACE3A05E80BB3502666F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -549,6 +505,38 @@
 			};
 			name = Debug;
 		};
+		D9357E0D7F4D7D14C65C6AAEAC5450D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C87F076317405D93BEB1B66CEC3DFCF2 /* MarkdownParser.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MarkdownParser/MarkdownParser-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MarkdownParser/MarkdownParser-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MarkdownParser/MarkdownParser.modulemap";
+				PRODUCT_MODULE_NAME = MarkdownParser;
+				PRODUCT_NAME = MarkdownParser;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		F232B5ECA11A71BFA199A229B323F454 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -602,7 +590,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -629,11 +618,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F9E58BE717B660A84C29B7CB06A816E1 /* Build configuration list for PBXNativeTarget "MarkdownParser" */ = {
+		9B11874097B26447B24AA81CC48B43A2 /* Build configuration list for PBXNativeTarget "MarkdownParser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				307533C6059656FD7C6B68B0B79A75AD /* Debug */,
-				233ED4BF4A4695AA7222E80F6143878F /* Release */,
+				95E3C57145C4BED56FD7168AE11E3764 /* Debug */,
+				D9357E0D7F4D7D14C65C6AAEAC5450D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
