@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+A markdown parser written purely in swift. it can be used render markdown and display it in any format needed
                        DESC
 
   s.homepage         = 'https://github.com/NaifAlrashed/MarkdownParser'
